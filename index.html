@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Pulsar Realty — Коммерческая недвижимость</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg-primary:#0d0a1f;--bg-secondary:#161230;--bg-card:#1e1845;--accent:#7c5cfc;--accent-light:#a78bfa;--accent-glow:rgba(124,92,252,.3);--red-pulse:#ff4060;--text-primary:#f0ecff;--text-secondary:#9b8ec4;--text-muted:#6b5e8a;--border:rgba(124,92,252,.15);--success:#34d399;--orange:#f59e0b;--radius:16px;--radius-sm:10px}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'Nunito',sans-serif;background:var(--bg-primary);color:var(--text-primary);min-height:100vh;overflow-x:hidden}
+.header{position:sticky;top:0;z-index:100;background:rgba(13,10,31,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:12px 16px}
+.header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--accent),var(--red-pulse));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;position:relative;overflow:hidden}
+.logo-icon::after{content:'';position:absolute;width:100%;height:2px;background:#fff;top:50%;animation:pulse-line 2s infinite}
+@keyframes pulse-line{0%,40%,100%{transform:scaleX(.3);opacity:.5}45%{transform:scaleX(.5) translateY(-4px);opacity:1}50%{transform:scaleX(.5) translateY(3px);opacity:1}55%{transform:scaleX(.5) translateY(-8px);opacity:1}60%{transform:scaleX(.5) translateY(2px);opacity:1}65%{transform:scaleX(.3);opacity:.5}}
+.logo-text{font-family:'Montserrat',sans-serif;font-weight:800;font-size:16px;letter-spacing:.5px;background:linear-gradient(135deg,#fff,var(--accent-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo-sub{font-size:10px;color:var(--text-muted);font-weight:500;letter-spacing:1.5px;text-transform:uppercase;display:block;margin-top:-2px;-webkit-text-fill-color:var(--text-muted);background:none}
+.nav{display:flex;gap:4px;background:var(--bg-secondary);border-radius:12px;padding:3px}
+.nav-tab{flex:1;padding:10px 4px;border:none;background:transparent;color:var(--text-muted);font-family:'Nunito',sans-serif;font-size:11px;font-weight:600;border-radius:10px;cursor:pointer;transition:all .3s;display:flex;flex-direction:column;align-items:center;gap:3px}
+.nav-tab svg{width:20px;height:20px}
+.nav-tab.active{background:var(--accent);color:#fff;box-shadow:0 4px 15px var(--accent-glow)}
+.nav-tab:not(.active):active{background:rgba(124,92,252,.1)}
+.page{display:none;padding:16px;padding-bottom:30px;animation:fadeIn .3s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.deal-toggle{display:flex;background:var(--bg-secondary);border-radius:10px;padding:3px;margin-bottom:12px}
+.deal-btn{flex:1;padding:9px;border:none;background:transparent;color:var(--text-muted);font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;border-radius:8px;cursor:pointer;transition:all .3s}
+.deal-btn.active{background:var(--accent);color:#fff}
+.search-bar{display:flex;gap:8px;margin-bottom:12px}
+.search-input{flex:1;padding:12px 16px;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-family:'Nunito',sans-serif;font-size:14px;outline:none;transition:border-color .3s}
+.search-input::placeholder{color:var(--text-muted)}
+.search-input:focus{border-color:var(--accent)}
+.filter-btn{padding:12px 14px;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-secondary);cursor:pointer;transition:all .3s}
+.filter-btn:active{background:var(--accent);color:#fff}
+.filters{display:none;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.filters.show{display:flex}
+.filter-chip{padding:8px 14px;background:var(--bg-secondary);border:1px solid var(--border);border-radius:20px;color:var(--text-secondary);font-size:13px;cursor:pointer;transition:all .3s;font-family:'Nunito',sans-serif}
+.filter-chip.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.property-card{background:var(--bg-card);border-radius:var(--radius);overflow:hidden;margin-bottom:14px;border:1px solid var(--border);transition:all .3s;cursor:pointer}
+.property-card:active{transform:scale(.98);border-color:var(--accent)}
+.property-img{width:100%;height:170px;background-size:cover;background-position:center;position:relative}
+.property-badge{position:absolute;top:12px;left:12px;padding:5px 10px;border-radius:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.badge-office{background:var(--accent);color:#fff}
+.badge-retail{background:var(--orange);color:#1a1000}
+.badge-gab{background:var(--success);color:#0a2a1a}
+.badge-hot{background:var(--red-pulse);color:#fff}
+.property-deal-tag{position:absolute;top:12px;right:12px;padding:4px 8px;border-radius:6px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;background:rgba(13,10,31,.8);backdrop-filter:blur(8px);color:var(--text-primary)}
+.property-price-tag{position:absolute;bottom:12px;right:12px;padding:6px 12px;background:rgba(13,10,31,.85);backdrop-filter:blur(10px);border-radius:8px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;color:#fff}
+.property-price-sub{font-size:10px;font-weight:500;color:var(--accent-light);display:block}
+.property-info{padding:14px}
+.property-title{font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;margin-bottom:4px;line-height:1.3}
+.property-location{color:var(--text-secondary);font-size:13px;margin-bottom:10px;display:flex;align-items:center;gap:4px}
+.property-features{display:flex;gap:10px;flex-wrap:wrap}
+.feature{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-secondary)}
+.feature svg{width:15px;height:15px;color:var(--accent-light)}
+.feature-highlight{color:var(--success);font-weight:700}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;align-items:flex-end;justify-content:center}
+.modal-overlay.show{display:flex}
+.modal{background:var(--bg-primary);width:100%;max-height:90vh;border-radius:20px 20px 0 0;overflow-y:auto;animation:slideUp .3s ease}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.modal-handle{width:40px;height:4px;background:var(--text-muted);border-radius:2px;margin:12px auto}
+.modal-img{width:100%;height:220px;background-size:cover;background-position:center}
+.modal-content{padding:20px}
+.modal-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:20px;margin-bottom:4px;line-height:1.3}
+.modal-price{font-family:'Montserrat',sans-serif;font-weight:700;font-size:22px;color:var(--accent-light);margin-bottom:4px}
+.modal-price-sub{font-size:13px;color:var(--text-muted);margin-bottom:14px}
+.modal-desc{color:var(--text-secondary);font-size:14px;line-height:1.6;margin-bottom:16px}
+.modal-features-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px}
+.modal-feature-item{background:var(--bg-secondary);padding:10px 8px;border-radius:var(--radius-sm);text-align:center}
+.modal-feature-item .value{font-family:'Montserrat',sans-serif;font-weight:700;font-size:16px;color:var(--accent-light)}
+.modal-feature-item .label{font-size:10px;color:var(--text-muted);margin-top:2px}
+.modal-gab-info{background:linear-gradient(135deg,rgba(52,211,153,.1),rgba(124,92,252,.1));border:1px solid rgba(52,211,153,.3);border-radius:var(--radius-sm);padding:14px;margin-bottom:16px}
+.modal-gab-info h4{font-family:'Montserrat',sans-serif;font-size:13px;color:var(--success);margin-bottom:8px}
+.modal-gab-row{display:flex;justify-content:space-between;font-size:13px;color:var(--text-secondary);margin-bottom:4px}
+.modal-gab-row .val{color:var(--text-primary);font-weight:700}
+.btn{width:100%;padding:14px;border:none;border-radius:var(--radius-sm);font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;cursor:pointer;transition:all .3s}
+.btn-primary{background:linear-gradient(135deg,var(--accent),#6040e0);color:#fff;box-shadow:0 4px 20px var(--accent-glow)}
+.btn-primary:active{transform:scale(.97)}
+.btn-outline{background:transparent;color:var(--accent-light);border:1.5px solid var(--accent);margin-top:10px}
+.calc-section{background:var(--bg-card);border-radius:var(--radius);padding:20px;margin-bottom:16px;border:1px solid var(--border)}
+.calc-section h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;margin-bottom:16px}
+.calc-field{margin-bottom:16px}
+.calc-label{display:flex;justify-content:space-between;margin-bottom:8px;font-size:13px;color:var(--text-secondary)}
+.calc-value{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--accent-light)}
+.calc-slider{width:100%;-webkit-appearance:none;height:6px;border-radius:3px;background:var(--bg-secondary);outline:none}
+.calc-slider::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--accent);cursor:pointer;box-shadow:0 0 10px var(--accent-glow)}
+.calc-tabs{display:flex;background:var(--bg-secondary);border-radius:10px;padding:3px;margin-bottom:16px}
+.calc-tab{flex:1;padding:9px;border:none;background:transparent;color:var(--text-muted);font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;border-radius:8px;cursor:pointer;transition:all .3s}
+.calc-tab.active{background:var(--accent);color:#fff}
+.calc-result{background:linear-gradient(135deg,var(--bg-secondary),rgba(124,92,252,.1));border-radius:var(--radius);padding:24px;text-align:center;border:1px solid var(--accent);box-shadow:0 0 30px var(--accent-glow)}
+.calc-result-label{font-size:14px;color:var(--text-secondary);margin-bottom:6px}
+.calc-result-value{font-family:'Montserrat',sans-serif;font-weight:800;font-size:30px;background:linear-gradient(135deg,#fff,var(--accent-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.calc-result-sub{font-size:13px;color:var(--text-muted);margin-top:4px}
+.calc-breakdown{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.breakdown-item{background:var(--bg-card);padding:12px;border-radius:var(--radius-sm);text-align:center}
+.breakdown-item .val{font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;color:var(--text-primary)}
+.breakdown-item .lbl{font-size:11px;color:var(--text-muted);margin-top:2px}
+.roi-highlight{background:linear-gradient(135deg,rgba(52,211,153,.1),rgba(52,211,153,.05));border:1px solid rgba(52,211,153,.3);border-radius:var(--radius-sm);padding:14px;margin-top:16px;text-align:center}
+.roi-highlight .val{font-family:'Montserrat',sans-serif;font-weight:800;font-size:28px;color:var(--success)}
+.roi-highlight .lbl{font-size:12px;color:var(--text-secondary);margin-top:2px}
+.map-container{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);margin-bottom:14px}
+#map{height:400px;width:100%}
+.map-legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary)}
+.legend-dot{width:10px;height:10px;border-radius:50%}
+.form-section{background:var(--bg-card);border-radius:var(--radius);padding:20px;margin-bottom:16px;border:1px solid var(--border)}
+.form-section h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;margin-bottom:16px}
+.form-group{margin-bottom:14px}
+.form-label{display:block;font-size:13px;color:var(--text-secondary);margin-bottom:6px}
+.form-input,.form-textarea,.form-select{width:100%;padding:12px 14px;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-family:'Nunito',sans-serif;font-size:14px;outline:none;transition:border-color .3s}
+.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--accent)}
+.form-textarea{min-height:90px;resize:vertical}
+.form-select option{background:var(--bg-secondary)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.success-msg{display:none;text-align:center;padding:30px}
+.success-msg.show{display:block}
+.success-icon{width:60px;height:60px;background:var(--success);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:28px}
+.success-msg h3{font-family:'Montserrat',sans-serif;font-size:20px;margin-bottom:8px}
+.success-msg p{color:var(--text-secondary);font-size:14px}
+.section-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:18px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.section-title .icon{width:28px;height:28px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px}
+.pulse-decoration{height:3px;background:var(--bg-secondary);border-radius:2px;margin:16px 0;position:relative;overflow:hidden}
+.pulse-decoration::after{content:'';position:absolute;width:40px;height:100%;background:linear-gradient(90deg,transparent,var(--red-pulse),transparent);animation:movePulse 3s infinite linear}
+@keyframes movePulse{0%{left:-40px}100%{left:100%}}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg-primary)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+.leaflet-popup-content-wrapper{background:var(--bg-card)!important;color:var(--text-primary)!important;border-radius:12px!important;border:1px solid var(--border)!important}
+.leaflet-popup-tip{background:var(--bg-card)!important}
+.leaflet-popup-content{font-family:'Nunito',sans-serif!important;font-size:13px!important}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-top">
+    <div class="logo">
+      <div class="logo-icon">♥</div>
+      <div>
+        <span class="logo-text">PULSAR REALTY</span>
+        <span class="logo-sub">Коммерческая недвижимость</span>
+      </div>
+    </div>
+  </div>
+  <div class="nav">
+    <button class="nav-tab active" data-page="catalog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Каталог</button>
+    <button class="nav-tab" data-page="map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Карта</button>
+    <button class="nav-tab" data-page="calc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="16" y2="18"/></svg>Расчёт</button>
+    <button class="nav-tab" data-page="form"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Заявка</button>
+  </div>
+</div>
+
+<div class="page active" id="page-catalog">
+  <div class="deal-toggle">
+    <button class="deal-btn active" data-deal="all">Все</button>
+    <button class="deal-btn" data-deal="rent">Аренда</button>
+    <button class="deal-btn" data-deal="buy">Покупка</button>
+  </div>
+  <div class="search-bar">
+    <input class="search-input" type="text" placeholder="Поиск по адресу, БЦ, ТЦ..." id="searchInput">
+    <button class="filter-btn" id="filterToggle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="20" y2="12"/><line x1="12" y1="18" x2="20" y2="18"/></svg></button>
+  </div>
+  <div class="filters" id="filters">
+    <button class="filter-chip active" data-filter="all">Все</button>
+    <button class="filter-chip" data-filter="office">Офисы</button>
+    <button class="filter-chip" data-filter="retail">Ритейл</button>
+    <button class="filter-chip" data-filter="gab">ГАБ</button>
+  </div>
+  <div id="propertyList"></div>
+</div>
+
+<div class="page" id="page-map">
+  <div class="section-title"><div class="icon">📍</div>Объекты на карте</div>
+  <div class="map-legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#7c5cfc"></div>Офисы</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div>Ритейл</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#34d399"></div>ГАБ</div>
+  </div>
+  <div class="map-container"><div id="map"></div></div>
+</div>
+
+<div class="page" id="page-calc">
+  <div class="section-title"><div class="icon">📊</div>Калькулятор</div>
+  <div class="calc-tabs">
+    <button class="calc-tab active" data-calc="roi">Окупаемость</button>
+    <button class="calc-tab" data-calc="rent">Аренда</button>
+    <button class="calc-tab" data-calc="mortgage">Ипотека</button>
+  </div>
+  <div id="calc-roi">
+    <div class="calc-section">
+      <h3>💰 Расчёт окупаемости ГАБ</h3>
+      <div class="calc-field"><div class="calc-label"><span>Стоимость объекта</span><span class="calc-value" id="roiPriceVal">25 000 000 ₽</span></div><input type="range" class="calc-slider" id="roiPriceSlider" min="5000000" max="200000000" step="1000000" value="25000000"></div>
+      <div class="calc-field"><div class="calc-label"><span>Арендный доход в месяц</span><span class="calc-value" id="roiRentVal">200 000 ₽</span></div><input type="range" class="calc-slider" id="roiRentSlider" min="50000" max="3000000" step="10000" value="200000"></div>
+      <div class="calc-field"><div class="calc-label"><span>Расходы на содержание (% от аренды)</span><span class="calc-value" id="roiExpVal">15%</span></div><input type="range" class="calc-slider" id="roiExpSlider" min="0" max="40" step="1" value="15"></div>
+    </div>
+    <div class="calc-result">
+      <div class="calc-result-label">Срок окупаемости</div>
+      <div class="calc-result-value" id="roiYears">12.3 лет</div>
+      <div class="calc-result-sub" id="roiMonths">147 месяцев</div>
+      <div class="calc-breakdown">
+        <div class="breakdown-item"><div class="val" id="roiNetRent">170 000 ₽</div><div class="lbl">Чистый доход/мес</div></div>
+        <div class="breakdown-item"><div class="val" id="roiAnnual">2 040 000 ₽</div><div class="lbl">Доход в год</div></div>
+      </div>
+      <div class="roi-highlight"><div class="val" id="roiPercent">8.2%</div><div class="lbl">Годовая доходность</div></div>
+    </div>
+  </div>
+  <div id="calc-rent" style="display:none">
+    <div class="calc-section">
+      <h3>🏢 Расчёт стоимости аренды</h3>
+      <div class="calc-field"><div class="calc-label"><span>Площадь, м²</span><span class="calc-value" id="rentAreaVal">100 м²</span></div><input type="range" class="calc-slider" id="rentAreaSlider" min="20" max="2000" step="10" value="100"></div>
+      <div class="calc-field"><div class="calc-label"><span>Ставка за м²/год</span><span class="calc-value" id="rentRateVal">18 000 ₽</span></div><input type="range" class="calc-slider" id="rentRateSlider" min="5000" max="60000" step="500" value="18000"></div>
+      <div class="calc-field"><div class="calc-label"><span>OPEX за м²/год</span><span class="calc-value" id="rentOpexVal">5 000 ₽</span></div><input type="range" class="calc-slider" id="rentOpexSlider" min="0" max="15000" step="500" value="5000"></div>
+    </div>
+    <div class="calc-result">
+      <div class="calc-result-label">Аренда в месяц (с OPEX)</div>
+      <div class="calc-result-value" id="rentMonthly">191 667 ₽</div>
+      <div class="calc-result-sub" id="rentYearly">В год: 2 300 000 ₽</div>
+      <div class="calc-breakdown">
+        <div class="breakdown-item"><div class="val" id="rentBase">150 000 ₽</div><div class="lbl">Базовая аренда/мес</div></div>
+        <div class="breakdown-item"><div class="val" id="rentOpex">41 667 ₽</div><div class="lbl">OPEX/мес</div></div>
+      </div>
+    </div>
+  </div>
+  <div id="calc-mortgage" style="display:none">
+    <div class="calc-section">
+      <h3>🏦 Ипотека на коммерцию</h3>
+      <div class="calc-field"><div class="calc-label"><span>Стоимость объекта</span><span class="calc-value" id="mortPriceVal">20 000 000 ₽</span></div><input type="range" class="calc-slider" id="mortPriceSlider" min="5000000" max="200000000" step="1000000" value="20000000"></div>
+      <div class="calc-field"><div class="calc-label"><span>Первоначальный взнос</span><span class="calc-value" id="mortDownVal">30%</span></div><input type="range" class="calc-slider" id="mortDownSlider" min="10" max="90" step="5" value="30"></div>
+      <div class="calc-field"><div class="calc-label"><span>Срок кредита</span><span class="calc-value" id="mortTermVal">15 лет</span></div><input type="range" class="calc-slider" id="mortTermSlider" min="1" max="25" step="1" value="15"></div>
+      <div class="calc-field"><div class="calc-label"><span>Ставка</span><span class="calc-value" id="mortRateVal">12%</span></div><input type="range" class="calc-slider" id="mortRateSlider" min="5" max="25" step="0.1" value="12"></div>
+    </div>
+    <div class="calc-result">
+      <div class="calc-result-label">Ежемесячный платёж</div>
+      <div class="calc-result-value" id="mortMonthly">168 068 ₽</div>
+      <div class="calc-result-sub" id="mortOverpay">Переплата: 16 252 184 ₽</div>
+      <div class="calc-breakdown">
+        <div class="breakdown-item"><div class="val" id="mortLoan">14 000 000 ₽</div><div class="lbl">Сумма кредита</div></div>
+        <div class="breakdown-item"><div class="val" id="mortTotal">30 252 184 ₽</div><div class="lbl">Всего выплат</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="pulse-decoration"></div>
+</div>
+
+<div class="page" id="page-form">
+  <div class="section-title"><div class="icon">✉️</div>Оставить заявку</div>
+  <div id="formContent">
+    <div class="form-section">
+      <h3>Контактные данные</h3>
+      <div class="form-group"><label class="form-label">Компания / ФИО *</label><input class="form-input" type="text" id="fName" placeholder="ООО «Компания» / Иванов Иван"></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Телефон *</label><input class="form-input" type="tel" id="fPhone" placeholder="+7 (999) 123-45-67"></div>
+        <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" id="fEmail" placeholder="mail@company.ru"></div>
+      </div>
+    </div>
+    <div class="form-section">
+      <h3>Параметры запроса</h3>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Тип сделки</label><select class="form-select" id="fDeal"><option value="">Выберите</option><option value="rent">Аренда</option><option value="buy">Покупка</option><option value="gab">Покупка ГАБ</option></select></div>
+        <div class="form-group"><label class="form-label">Тип объекта</label><select class="form-select" id="fType"><option value="">Выберите</option><option value="office">Офис</option><option value="retail">Ритейл / стрит</option><option value="gab">ГАБ</option></select></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Площадь от, м²</label><input class="form-input" type="text" id="fAreaMin" placeholder="50"></div>
+        <div class="form-group"><label class="form-label">Площадь до, м²</label><input class="form-input" type="text" id="fAreaMax" placeholder="500"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Бюджет от</label><input class="form-input" type="text" id="fBudgetMin" placeholder="5 000 000 ₽"></div>
+        <div class="form-group"><label class="form-label">Бюджет до</label><input class="form-input" type="text" id="fBudgetMax" placeholder="50 000 000 ₽"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Предпочтительная локация</label><input class="form-input" type="text" id="fDistrict" placeholder="ЦАО, Москва-Сити, Белорусская..."></div>
+      <div class="form-group"><label class="form-label">Комментарий</label><textarea class="form-textarea" id="fComment" placeholder="Класс БЦ, требования к отделке, наличие арендатора, желаемая доходность..."></textarea></div>
+    </div>
+    <button class="btn btn-primary" onclick="submitForm()">Отправить заявку</button>
+  </div>
+  <div class="success-msg" id="successMsg">
+    <div class="success-icon">✓</div>
+    <h3>Заявка отправлена!</h3>
+    <p>Наш брокер свяжется с вами в ближайшее время</p>
+    <button class="btn btn-outline" onclick="resetForm()" style="margin-top:20px">Новая заявка</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-img" id="modalImg"></div>
+    <div class="modal-content">
+      <div class="modal-title" id="modalTitle"></div>
+      <div class="modal-price" id="modalPrice"></div>
+      <div class="modal-price-sub" id="modalPriceSub"></div>
+      <div class="modal-desc" id="modalDesc"></div>
+      <div class="modal-features-grid" id="modalFeatures"></div>
+      <div class="modal-gab-info" id="modalGab" style="display:none"></div>
+      <button class="btn btn-primary" onclick="openFormFromModal()">Оставить заявку</button>
+      <button class="btn btn-outline" onclick="document.getElementById('modalOverlay').classList.remove('show')">Закрыть</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const properties=[
+{id:1,type:'office',deal:'rent',badge:'office',title:'Офис 250 м² в БЦ «Северная Башня»',location:'Москва-Сити, Пресненская наб., 12',price:0,rentPrice:25000,area:250,floor:'28/45',class:'A',img:'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop',lat:55.749,lng:37.537,desc:'Премиальный офис с панорамным видом на реку. Отделка «под ключ», open-space + 4 кабинета, переговорная. Класс А, 24/7 доступ, серверная.',opex:8500,parking:5},
+{id:2,type:'office',deal:'buy',badge:'office',title:'Офис 180 м² в БЦ «Белая Площадь»',location:'Лесная ул., 5, класс А',price:54000000,area:180,floor:'12/17',class:'A',img:'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=600&h=400&fit=crop',lat:55.780,lng:37.588,desc:'Офисный блок с чистовой отделкой, панорамным остеклением. Собственная переговорная, серверная. БЦ с ресторанами и фитнесом.',parking:3},
+{id:3,type:'retail',deal:'rent',badge:'retail',title:'Стрит-ритейл 120 м² на Тверской',location:'Тверская ул., 18',price:0,rentPrice:85000,area:120,floor:'1/7',class:'prime',img:'https://images.unsplash.com/photo-1528698827591-e19cef791f48?w=600&h=400&fit=crop',lat:55.764,lng:37.606,desc:'Торговое помещение на первой линии Тверской. Витрины 6м, отдельный вход, потолки 4.5м. Трафик 50 000+ чел/день. Идеально для fashion, HoReCa, банков.',frontage:'12м'},
+{id:4,type:'gab',deal:'buy',badge:'gab',title:'ГАБ: «Пятёрочка», окупаемость 9 лет',location:'ЮАО, ул. Академика Янгеля, 4',price:42000000,area:350,floor:'1/17',class:'street',img:'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&h=400&fit=crop',lat:55.690,lng:37.600,desc:'Готовый арендный бизнес с якорным арендатором «Пятёрочка». Долгосрочный договор на 7 лет с индексацией 5%. Первый этаж жилого дома, отдельный вход, разгрузка.',tenant:'Пятёрочка',leaseYears:7,annualRent:4680000,yieldPct:11.1,payback:9},
+{id:5,type:'gab',deal:'buy',badge:'gab',title:'ГАБ: аптека «Ригла», доходность 10.5%',location:'СВАО, Алтуфьевское ш., 48',price:18500000,area:85,floor:'1/22',class:'street',img:'https://images.unsplash.com/photo-1586015555751-63bb77f4322a?w=600&h=400&fit=crop',lat:55.850,lng:37.586,desc:'Действующий арендатор — сеть аптек «Ригла». Договор на 5 лет, индексация 4%/год. Первый этаж, отдельный вход, жилой массив.',tenant:'Ригла',leaseYears:5,annualRent:1942500,yieldPct:10.5,payback:9.5},
+{id:6,type:'office',deal:'rent',badge:'hot',title:'Офис 500 м² на Павелецкой',location:'Дубининская ул., 57, БЦ «Аврора»',price:0,rentPrice:22000,area:500,floor:'5/12',class:'B+',img:'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&h=400&fit=crop',lat:55.731,lng:37.639,desc:'Большой офисный блок, open-space с зонированием. Свежий ремонт, серверная, 2 переговорные. 5 мин до м. Павелецкая.',opex:6200,parking:8},
+{id:7,type:'retail',deal:'buy',badge:'retail',title:'Торговое 200 м² на Кутузовском',location:'Кутузовский пр-т, 36',price:65000000,area:200,floor:'1/10',class:'prime',img:'https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=600&h=400&fit=crop',lat:55.740,lng:37.550,desc:'Премиальная локация. Высокий трафик, витрина 15м, 2 входа. Подходит для ресторана, банка, шоурума. Действующий арендатор, доход 6.5 млн/год.',frontage:'15м'},
+{id:8,type:'gab',deal:'buy',badge:'gab',title:'ГАБ: «ВкусВилл» + кофейня, доход 12%',location:'ЗАО, ул. Лобачевского, 100',price:55000000,area:280,floor:'1/24',class:'street',img:'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop',lat:55.700,lng:37.490,desc:'Два арендатора: «ВкусВилл» (220 м²) и сетевая кофейня (60 м²). Долгосрочные договоры, общий доход 6.6 млн/год. Новый ЖК, растущий район.',tenant:'ВкусВилл + кофейня',leaseYears:6,annualRent:6600000,yieldPct:12,payback:8.3},
+{id:9,type:'office',deal:'buy',badge:'office',title:'Лофт-офис 320 м² в «Даниловской Мануфактуре»',location:'Варшавское ш., 9, стр. 1',price:48000000,area:320,floor:'3/5',class:'B+',img:'https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=600&h=400&fit=crop',lat:55.715,lng:37.627,desc:'Лофтовое пространство в историческом здании. Высокие потолки, кирпич, большие окна. Полностью оборудован. Творческий кластер с ресторанами.',parking:4},
+{id:10,type:'retail',deal:'rent',badge:'hot',title:'ПСН 90 м² в новом ЖК, первая линия',location:'Мичуринский пр-т, 56, ЖК «Западный Порт»',price:0,rentPrice:30000,area:90,floor:'1/30',class:'street',img:'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop',lat:55.710,lng:37.480,desc:'Новое помещение в ЖК бизнес-класса. Витрины 8м, высота 4м, свободная планировка. 3500 квартир — встроенный трафик. Для пекарни, салона, клиники.',opex:4000,frontage:'8м'}
+];
+
+function fmt(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ')}
+function fmtPrice(n){return fmt(n)+' ₽'}
+function getPriceSub(p){return p.deal==='rent'?fmt(Math.round(p.rentPrice*p.area/12))+' ₽/мес':fmt(Math.round(p.price/p.area))+' ₽/м²'}
+
+const tabs=document.querySelectorAll('.nav-tab');
+let mapInit=false;
+tabs.forEach(t=>t.addEventListener('click',()=>{
+  tabs.forEach(x=>x.classList.remove('active'));t.classList.add('active');
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+t.dataset.page).classList.add('active');
+  if(t.dataset.page==='map'&&!mapInit){initMap();mapInit=true}
+}));
+
+let activeFilter='all',activeDeal='all';
+function renderProperties(){
+  const s=document.getElementById('searchInput').value.toLowerCase();
+  const f=properties.filter(p=>{
+    const mf=activeFilter==='all'||p.type===activeFilter;
+    const md=activeDeal==='all'||p.deal===activeDeal;
+    const ms=!s||p.title.toLowerCase().includes(s)||p.location.toLowerCase().includes(s);
+    return mf&&md&&ms;
+  });
+  document.getElementById('propertyList').innerHTML=f.map(p=>`
+    <div class="property-card" onclick="openModal(${p.id})">
+      <div class="property-img" style="background-image:url('${p.img}')">
+        ${p.badge?`<div class="property-badge badge-${p.badge==='hot'?'hot':p.type}">${p.type==='office'?'Офис':p.type==='retail'?'Ритейл':'ГАБ'}${p.badge==='hot'?' 🔥':''}</div>`:''}
+        <div class="property-deal-tag">${p.deal==='rent'?'Аренда':'Покупка'}</div>
+        <div class="property-price-tag">${p.deal==='rent'?fmt(p.rentPrice)+' ₽/м²':fmtPrice(p.price)}<span class="property-price-sub">${getPriceSub(p)}</span></div>
+      </div>
+      <div class="property-info">
+        <div class="property-title">${p.title}</div>
+        <div class="property-location"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>${p.location}</div>
+        <div class="property-features">
+          <div class="feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>${p.area} м²</div>
+          ${p.class?`<div class="feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>${p.class}</div>`:''}
+          <div class="feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><line x1="12" y1="2" x2="12" y2="6"/></svg>эт. ${p.floor}</div>
+          ${p.yieldPct?`<div class="feature feature-highlight">↗ ${p.yieldPct}% годовых</div>`:''}
+          ${p.tenant?`<div class="feature feature-highlight">✓ ${p.tenant}</div>`:''}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+document.querySelectorAll('.deal-btn').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.deal-btn').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');activeDeal=b.dataset.deal;renderProperties();
+}));
+document.querySelectorAll('.filter-chip').forEach(c=>c.addEventListener('click',()=>{
+  document.querySelectorAll('.filter-chip').forEach(x=>x.classList.remove('active'));
+  c.classList.add('active');activeFilter=c.dataset.filter;renderProperties();
+}));
+document.getElementById('filterToggle').addEventListener('click',()=>document.getElementById('filters').classList.toggle('show'));
+document.getElementById('searchInput').addEventListener('input',renderProperties);
+renderProperties();
+
+function openModal(id){
+  const p=properties.find(x=>x.id===id);if(!p)return;
+  document.getElementById('modalImg').style.backgroundImage=`url('${p.img}')`;
+  document.getElementById('modalTitle').textContent=p.title;
+  document.getElementById('modalPrice').textContent=p.deal==='rent'?fmt(p.rentPrice)+' ₽/м²/год':fmtPrice(p.price);
+  document.getElementById('modalPriceSub').textContent=p.deal==='rent'?`≈ ${fmtPrice(Math.round(p.rentPrice*p.area/12))}/мес за ${p.area} м²${p.opex?' + OPEX '+fmt(p.opex)+' ₽/м²/год':''}`:`${fmt(Math.round(p.price/p.area))} ₽ за м²`;
+  document.getElementById('modalDesc').textContent=p.desc;
+  let fh=`<div class="modal-feature-item"><div class="value">${p.area} м²</div><div class="label">Площадь</div></div><div class="modal-feature-item"><div class="value">${p.class||'—'}</div><div class="label">Класс</div></div><div class="modal-feature-item"><div class="value">${p.floor}</div><div class="label">Этаж</div></div>`;
+  if(p.parking)fh+=`<div class="modal-feature-item"><div class="value">${p.parking}</div><div class="label">М/мест</div></div>`;
+  if(p.frontage)fh+=`<div class="modal-feature-item"><div class="value">${p.frontage}</div><div class="label">Витрина</div></div>`;
+  document.getElementById('modalFeatures').innerHTML=fh;
+  const gb=document.getElementById('modalGab');
+  if(p.type==='gab'&&p.tenant){gb.style.display='block';gb.innerHTML=`<h4>📈 Инвестиционные показатели</h4><div class="modal-gab-row"><span>Арендатор</span><span class="val">${p.tenant}</span></div><div class="modal-gab-row"><span>Срок договора</span><span class="val">${p.leaseYears} лет</span></div><div class="modal-gab-row"><span>Арендный доход/год</span><span class="val">${fmtPrice(p.annualRent)}</span></div><div class="modal-gab-row"><span>Доходность</span><span class="val" style="color:var(--success)">${p.yieldPct}%</span></div><div class="modal-gab-row"><span>Окупаемость</span><span class="val">${p.payback} лет</span></div>`}else{gb.style.display='none'}
+  document.getElementById('modalOverlay').classList.add('show');
+}
+function closeModal(e){if(e.target===document.getElementById('modalOverlay'))document.getElementById('modalOverlay').classList.remove('show')}
+function openFormFromModal(){
+  document.getElementById('modalOverlay').classList.remove('show');
+  tabs.forEach(t=>t.classList.remove('active'));document.querySelector('[data-page="form"]').classList.add('active');
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('page-form').classList.add('active');
+}
+
+function initMap(){
+  const map=L.map('map').setView([55.751,37.580],11);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'© OpenStreetMap © CARTO'}).addTo(map);
+  const colors={office:'#7c5cfc',retail:'#f59e0b',gab:'#34d399'};
+  properties.forEach(p=>{
+    const c=colors[p.type]||'#7c5cfc';
+    const m=L.circleMarker([p.lat,p.lng],{radius:10,fillColor:c,color:c,weight:2,opacity:.9,fillOpacity:.6}).addTo(map);
+    const ps=p.deal==='rent'?fmt(p.rentPrice)+' ₽/м²/год':fmtPrice(p.price);
+    m.bindPopup(`<div style="min-width:200px"><strong style="font-size:13px">${p.title}</strong><br><span style="color:#a78bfa;font-weight:700;font-size:14px">${ps}</span><br><span style="opacity:.7">${p.area} м² · ${p.deal==='rent'?'Аренда':'Покупка'}</span>${p.yieldPct?'<br><span style="color:#34d399;font-weight:700">Доходность '+p.yieldPct+'%</span>':''}</div>`);
+  });
+  setTimeout(()=>map.invalidateSize(),300);
+}
+
+document.querySelectorAll('.calc-tab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.calc-tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');
+  ['roi','rent','mortgage'].forEach(c=>{document.getElementById('calc-'+c).style.display=c===t.dataset.calc?'block':'none'});
+}));
+
+function updateROI(){
+  const p=+document.getElementById('roiPriceSlider').value,r=+document.getElementById('roiRentSlider').value,e=+document.getElementById('roiExpSlider').value;
+  document.getElementById('roiPriceVal').textContent=fmtPrice(p);document.getElementById('roiRentVal').textContent=fmtPrice(r);document.getElementById('roiExpVal').textContent=e+'%';
+  const nr=r*(1-e/100),a=nr*12,y=p/a,m=Math.round(y*12),yp=(a/p*100).toFixed(1);
+  document.getElementById('roiYears').textContent=y.toFixed(1)+' лет';document.getElementById('roiMonths').textContent=m+' месяцев';
+  document.getElementById('roiNetRent').textContent=fmtPrice(Math.round(nr));document.getElementById('roiAnnual').textContent=fmtPrice(Math.round(a));
+  document.getElementById('roiPercent').textContent=yp+'%';
+}
+['roiPriceSlider','roiRentSlider','roiExpSlider'].forEach(id=>document.getElementById(id).addEventListener('input',updateROI));updateROI();
+
+function updateRent(){
+  const a=+document.getElementById('rentAreaSlider').value,r=+document.getElementById('rentRateSlider').value,o=+document.getElementById('rentOpexSlider').value;
+  document.getElementById('rentAreaVal').textContent=a+' м²';document.getElementById('rentRateVal').textContent=fmt(r)+' ₽';document.getElementById('rentOpexVal').textContent=fmt(o)+' ₽';
+  const yb=a*r,yo=a*o,yt=yb+yo,mt=Math.round(yt/12),mb=Math.round(yb/12),mo=Math.round(yo/12);
+  document.getElementById('rentMonthly').textContent=fmtPrice(mt);document.getElementById('rentYearly').textContent='В год: '+fmtPrice(yt);
+  document.getElementById('rentBase').textContent=fmtPrice(mb);document.getElementById('rentOpex').textContent=fmtPrice(mo);
+}
+['rentAreaSlider','rentRateSlider','rentOpexSlider'].forEach(id=>document.getElementById(id).addEventListener('input',updateRent));updateRent();
+
+function updateMortgage(){
+  const p=+document.getElementById('mortPriceSlider').value,d=+document.getElementById('mortDownSlider').value,y=+document.getElementById('mortTermSlider').value,r=+document.getElementById('mortRateSlider').value;
+  document.getElementById('mortPriceVal').textContent=fmtPrice(p);document.getElementById('mortDownVal').textContent=d+'%';
+  document.getElementById('mortTermVal').textContent=y+(y===1?' год':y<5?' года':' лет');document.getElementById('mortRateVal').textContent=r+'%';
+  const l=p*(1-d/100),mr=r/100/12,ms=y*12;let m=mr===0?l/ms:l*(mr*Math.pow(1+mr,ms))/(Math.pow(1+mr,ms)-1);
+  const t=m*ms,ov=t-l;
+  document.getElementById('mortMonthly').textContent=fmtPrice(Math.round(m));document.getElementById('mortOverpay').textContent='Переплата: '+fmtPrice(Math.round(ov));
+  document.getElementById('mortLoan').textContent=fmtPrice(Math.round(l));document.getElementById('mortTotal').textContent=fmtPrice(Math.round(t));
+}
+['mortPriceSlider','mortDownSlider','mortTermSlider','mortRateSlider'].forEach(id=>document.getElementById(id).addEventListener('input',updateMortgage));updateMortgage();
+
+function submitForm(){
+  const n=document.getElementById('fName').value.trim(),ph=document.getElementById('fPhone').value.trim();
+  if(!n||!ph){alert('Заполните имя/компанию и телефон');return}
+  const data={name:n,phone:ph,email:document.getElementById('fEmail').value,deal:document.getElementById('fDeal').value,type:document.getElementById('fType').value,areaMin:document.getElementById('fAreaMin').value,areaMax:document.getElementById('fAreaMax').value,budgetMin:document.getElementById('fBudgetMin').value,budgetMax:document.getElementById('fBudgetMax').value,district:document.getElementById('fDistrict').value,comment:document.getElementById('fComment').value};
+  if(window.Telegram&&window.Telegram.WebApp)Telegram.WebApp.sendData(JSON.stringify(data));
+  document.getElementById('formContent').style.display='none';document.getElementById('successMsg').classList.add('show');
+}
+function resetForm(){
+  document.getElementById('formContent').style.display='block';document.getElementById('successMsg').classList.remove('show');
+  document.querySelectorAll('#formContent .form-input,#formContent .form-textarea').forEach(i=>i.value='');
+  document.querySelectorAll('#formContent .form-select').forEach(s=>s.selectedIndex=0);
+}
+
+if(window.Telegram&&window.Telegram.WebApp){const tg=Telegram.WebApp;tg.ready();tg.expand()}
+</script>
+</body>
+</html>
