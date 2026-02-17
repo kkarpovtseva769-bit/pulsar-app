@@ -455,6 +455,42 @@ function resetForm(){
 }
 
 if(window.Telegram&&window.Telegram.WebApp){const tg=Telegram.WebApp;tg.ready();tg.expand()}
+
+// === DEEP LINKING ===
+// Поддержка открытия конкретного объекта или страницы из URL
+// Примеры: ?id=4 (открыть объект), ?page=form (открыть форму), ?page=calc (калькулятор)
+(function handleDeepLink(){
+  const params=new URLSearchParams(window.location.search);
+  
+  // Также проверяем Telegram startapp параметр
+  let propId=params.get('id');
+  let page=params.get('page');
+  
+  // Telegram передаёт параметр через tgWebAppStartParam
+  const tgParam=params.get('tgWebAppStartParam');
+  if(tgParam){
+    if(tgParam.startsWith('id_'))propId=tgParam.replace('id_','');
+    else if(tgParam.startsWith('page_'))page=tgParam.replace('page_','');
+    else if(!isNaN(tgParam))propId=tgParam;
+  }
+  
+  // Открыть конкретную страницу
+  if(page){
+    const tab=document.querySelector(`[data-page="${page}"]`);
+    if(tab){
+      tabs.forEach(t=>t.classList.remove('active'));tab.classList.add('active');
+      document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+      document.getElementById('page-'+page).classList.add('active');
+      if(page==='map'&&!mapInit){initMap();mapInit=true}
+    }
+  }
+  
+  // Открыть конкретный объект
+  if(propId){
+    const id=parseInt(propId);
+    setTimeout(()=>openModal(id),500);
+  }
+})();
 </script>
 </body>
 </html>
