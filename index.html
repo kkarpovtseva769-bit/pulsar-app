@@ -1,307 +1,477 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" prefix="og: http://ogp.me/ns#">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pulsar Realty — Коммерческая недвижимость</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif&display=swap" rel="stylesheet">
+<title>Pulsar Realty — Коммерческая недвижимость в Москве и МО | Офисы, Ритейл, ГАБ</title>
+
+<!-- SEO Meta -->
+<meta name="description" content="Pulsar Realty — аренда и продажа коммерческой недвижимости в Москве и Московской области. Офисы, стрит-ритейл, готовый арендный бизнес (ГАБ). Проверенные объекты с расчётом доходности.">
+<meta name="keywords" content="коммерческая недвижимость, купить офис Москва, аренда офиса, стрит-ритейл, готовый арендный бизнес, ГАБ, инвестиции в недвижимость, коммерческие помещения, продажа офисов, арендный бизнес Москва">
+<meta name="author" content="Pulsar Realty">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="geo.region" content="RU-MOW">
+<meta name="geo.placename" content="Москва">
+<link rel="canonical" href="https://kkarpovtseva769-bit.github.io/pulsar-app/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kkarpovtseva769-bit.github.io/pulsar-app/">
+<meta property="og:title" content="Pulsar Realty — Коммерческая недвижимость в Москве и МО">
+<meta property="og:description" content="Аренда и продажа офисов, ритейла и готового арендного бизнеса. Все объекты проверены, доходность посчитана.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Pulsar Realty">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pulsar Realty — Коммерческая недвижимость в Москве">
+<meta name="twitter:description" content="Офисы, ритейл, ГАБ — проверенные объекты с расчётом доходности.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80">
+
+<!-- Telegram sharing -->
+<meta property="og:share:telegram_text" content="Pulsar Realty — Коммерческая недвижимость в Москве и МО">
+
+<!-- Structured Data: Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "Pulsar Realty",
+  "description": "Брокерская компания, специализирующаяся на коммерческой недвижимости Москвы и Московской области. Офисы, стрит-ритейл, готовый арендный бизнес.",
+  "url": "https://kkarpovtseva769-bit.github.io/pulsar-app/",
+  "logo": "https://kkarpovtseva769-bit.github.io/pulsar-app/logo.png",
+  "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80",
+  "telephone": "+7-XXX-XXX-XX-XX",
+  "email": "info@pulsar-realty.ru",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Москва",
+    "addressCountry": "RU"
+  },
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 55.7558,
+      "longitude": 37.6173
+    },
+    "geoRadius": "60000"
+  },
+  "sameAs": [
+    "https://t.me/pulsar_realty"
+  ],
+  "priceRange": "₽₽₽",
+  "openingHours": "Mo-Su 09:00-21:00",
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Продажа коммерческой недвижимости"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Аренда коммерческой недвижимости"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Инвестиционный консалтинг"
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Structured Data: WebSite with Search -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Pulsar Realty",
+  "url": "https://kkarpovtseva769-bit.github.io/pulsar-app/",
+  "description": "Коммерческая недвижимость в Москве и МО",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://kkarpovtseva769-bit.github.io/pulsar-app/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- Structured Data: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://kkarpovtseva769-bit.github.io/pulsar-app/"},
+    {"@type": "ListItem", "position": 2, "name": "Каталог объектов", "item": "https://kkarpovtseva769-bit.github.io/pulsar-app/#catalog"},
+    {"@type": "ListItem", "position": 3, "name": "О компании", "item": "https://kkarpovtseva769-bit.github.io/pulsar-app/#about"},
+    {"@type": "ListItem", "position": 4, "name": "Калькулятор доходности", "item": "https://kkarpovtseva769-bit.github.io/pulsar-app/#calc"},
+    {"@type": "ListItem", "position": 5, "name": "Контакты", "item": "https://kkarpovtseva769-bit.github.io/pulsar-app/#contact"}
+  ]
+}
+</script>
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='36' height='36' rx='8' fill='%231a56db'/%3E%3Cpath d='M10 18h16M18 10v16' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='36' height='36' rx='8' fill='%231a56db'/%3E%3Cpath d='M10 18h16M18 10v16' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+
+<!-- Preconnect for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://zitdqwseavknnominhpu.supabase.co">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#09090b;--bg2:#111114;--sf:rgba(255,255,255,.04);--sf2:rgba(255,255,255,.06);--bd:rgba(255,255,255,.08);--bd2:rgba(255,255,255,.12);--tx:#fafafa;--tx2:rgba(255,255,255,.55);--tx3:rgba(255,255,255,.3);--ac1:#818cf8;--ac2:#a78bfa;--ac3:#c084fc;--gn:#34d399;--or:#fbbf24;--gr1:linear-gradient(135deg,#818cf8,#c084fc);--gr2:linear-gradient(135deg,#667eea,#764ba2);--font:'Plus Jakarta Sans',system-ui,sans-serif;--fh:'Instrument Serif',Georgia,serif;--r:16px}
-html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--tx);-webkit-font-smoothing:antialiased;overflow-x:hidden}a{color:var(--ac1);text-decoration:none}::selection{background:rgba(129,140,248,.3)}
-
-/* GLOW BG */
-.glow{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
-.glow-1{position:absolute;top:-20%;left:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(99,102,241,.12),transparent 70%);filter:blur(60px);animation:float1 20s ease-in-out infinite}
-.glow-2{position:absolute;bottom:-20%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(192,132,252,.08),transparent 70%);filter:blur(60px);animation:float2 25s ease-in-out infinite}
-@keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(60px,40px)}}
-@keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,-60px)}}
+:root{--bg:#fff;--bg2:#f5f6fa;--bg3:#eef0f5;--tx:#1a1a2e;--tx2:#5a5f7a;--tx3:#9298b0;--ac:#1a56db;--ac2:#2563eb;--ac3:#1e40af;--acd:rgba(26,86,219,.08);--gn:#059669;--or:#d97706;--bd:#e2e5ef;--r:14px;--font:'Inter',system-ui,sans-serif;--sh:0 2px 12px rgba(0,0,0,.06);--sh2:0 8px 32px rgba(0,0,0,.1)}
+html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--tx);-webkit-font-smoothing:antialiased}a{color:var(--ac);text-decoration:none}
 
 /* NAV */
-.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:100;background:rgba(17,17,20,.7);backdrop-filter:blur(20px)saturate(180%);border:1px solid var(--bd);border-radius:50px;padding:6px 8px;display:flex;align-items:center;gap:2px;max-width:720px;width:calc(100% - 32px)}
-.nav-logo{font-family:var(--fh);font-size:18px;padding:8px 16px;color:var(--tx);cursor:pointer;white-space:nowrap}
-.nav-links{display:flex;gap:2px;flex:1;justify-content:center}
-.nav-links a{padding:8px 14px;font-size:13px;font-weight:500;color:var(--tx2);border-radius:50px;cursor:pointer;transition:all .2s;white-space:nowrap}
-.nav-links a:hover{color:var(--tx);background:var(--sf2)}
-.nav-links a.on{color:var(--tx);background:var(--sf2)}
-.nav-cta{padding:8px 20px;background:var(--gr1);color:#fff;border:none;border-radius:50px;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap}
-.nav-cta:hover{opacity:.9;transform:scale(1.02)}
-.nav-bur{display:none;background:none;border:none;color:var(--tx);font-size:20px;cursor:pointer;padding:8px}
-
-/* PAGES */
-.pg{display:none;position:relative;z-index:1}.pg.on{display:block}
+.nav{background:#fff;border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:100}
+.nav-in{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:68px}
+.nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+.nav-logo svg{width:36px;height:36px}
+.nav-logo span{font-size:22px;font-weight:800;color:var(--tx);letter-spacing:-.5px}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-links a{padding:10px 16px;font-size:14px;font-weight:600;color:var(--tx2);border-radius:10px;cursor:pointer;transition:all .15s}
+.nav-links a:hover{background:var(--bg2);color:var(--tx)}.nav-links a.on{color:var(--ac);background:var(--acd)}
+.nav-r{display:flex;align-items:center;gap:12px}
+.nav-ph{font-size:15px;font-weight:700;color:var(--tx)}
+.nav-cta{padding:10px 24px;background:var(--ac);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s}.nav-cta:hover{background:var(--ac3)}
+.nav-bur{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--tx)}
+.pg{display:none}.pg.on{display:block}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;position:relative}
-.hero-in{max-width:1200px;margin:0 auto;padding:0 24px;text-align:center}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:var(--sf);border:1px solid var(--bd);border-radius:50px;font-size:12px;font-weight:600;color:var(--tx2);margin-bottom:32px;animation:fadeUp .8s ease both}
-.hero-badge span{width:6px;height:6px;background:var(--gn);border-radius:50%;animation:pulse2 2s infinite}
-@keyframes pulse2{0%,100%{opacity:1}50%{opacity:.4}}
-.hero h1{font-family:var(--fh);font-size:clamp(42px,8vw,86px);line-height:1.05;margin-bottom:24px;animation:fadeUp .8s ease .1s both}
-.hero h1 span{background:var(--gr1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:18px;color:var(--tx2);line-height:1.7;max-width:560px;margin:0 auto 48px;animation:fadeUp .8s ease .2s both}
-.hero-btns{display:flex;gap:12px;justify-content:center;animation:fadeUp .8s ease .3s both;flex-wrap:wrap}
-.btn{padding:14px 32px;border-radius:50px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;transition:all .3s;border:none;letter-spacing:-.2px}
-.btn-g{background:var(--gr1);color:#fff;box-shadow:0 0 32px rgba(129,140,248,.3)}.btn-g:hover{box-shadow:0 0 48px rgba(129,140,248,.5);transform:translateY(-2px)}
-.btn-o{background:var(--sf);color:var(--tx);border:1px solid var(--bd)}.btn-o:hover{background:var(--sf2);border-color:var(--bd2)}
-.hero-stats{display:flex;justify-content:center;gap:48px;margin-top:64px;animation:fadeUp .8s ease .4s both;flex-wrap:wrap}
-.hero-stat{text-align:center}.hero-stat-n{font-size:42px;font-weight:800;letter-spacing:-2px;background:var(--gr1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.hero-stat-l{font-size:12px;color:var(--tx3);text-transform:uppercase;letter-spacing:2px;margin-top:4px}
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero{position:relative;min-height:560px;display:flex;align-items:center;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80') center/cover;opacity:.25}
+.hero-in{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:48px 24px;width:100%}
+.hero h1{color:#fff;font-size:48px;font-weight:900;line-height:1.1;margin-bottom:12px;letter-spacing:-.5px;max-width:700px}
+.hero h1 span{color:#818cf8}
+.hero-sub{color:rgba(255,255,255,.6);font-size:16px;margin-bottom:32px;max-width:500px}
+
+/* SEARCH CARD */
+.search-card{background:#fff;border-radius:20px;padding:0;box-shadow:var(--sh2);max-width:900px;overflow:hidden}
+.search-tabs{display:flex;border-bottom:1px solid var(--bd)}
+.stab{flex:1;padding:16px;text-align:center;font-size:15px;font-weight:700;color:var(--tx2);cursor:pointer;transition:all .15s;border-bottom:3px solid transparent;background:none;border-top:none;border-left:none;border-right:none;font-family:inherit}
+.stab:hover{color:var(--tx);background:var(--bg2)}
+.stab.on{color:var(--ac);border-bottom-color:var(--ac);background:var(--acd)}
+.search-cats{padding:16px 20px;display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--bg3)}
+.scat{padding:8px 16px;border-radius:10px;border:1.5px solid var(--bd);background:#fff;font-family:inherit;font-size:13px;font-weight:600;color:var(--tx2);cursor:pointer;transition:all .15s}
+.scat:hover{border-color:var(--ac);color:var(--ac)}.scat.on{background:var(--ac);border-color:var(--ac);color:#fff}
+.search-body{padding:16px 20px;display:flex;gap:12px;flex-wrap:wrap;align-items:end}
+.sg{flex:1;min-width:140px}.sg label{display:block;font-size:11px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.sg select,.sg input{width:100%;padding:10px 14px;border:1.5px solid var(--bd);border-radius:10px;font-family:inherit;font-size:13px;color:var(--tx);background:var(--bg2);outline:none;appearance:none}
+.sg select{background-image:url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%239298b0' stroke-width='2' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;cursor:pointer}
+.sg select:focus,.sg input:focus{border-color:var(--ac);background:#fff}
+.sbtn{padding:10px 32px;background:var(--ac);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;height:42px;white-space:nowrap}.sbtn:hover{background:var(--ac3)}
+.search-links{padding:12px 20px 16px;display:flex;gap:8px;flex-wrap:wrap}
+.slink{font-size:12px;color:var(--ac);font-weight:600;padding:4px 12px;background:var(--acd);border-radius:20px;cursor:pointer;transition:all .15s}.slink:hover{background:var(--ac);color:#fff}
+
+/* TRUST */
+.trust{background:var(--bg2);padding:80px 24px}
+.trust-in{max-width:1280px;margin:0 auto}
+.trust h2{font-size:36px;font-weight:900;text-align:center;margin-bottom:48px;letter-spacing:-.5px}
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.trust-card{background:#fff;border-radius:var(--r);padding:28px;border:1px solid var(--bd);transition:all .2s;display:flex;gap:20px;align-items:flex-start}
+.trust-card:hover{box-shadow:var(--sh);transform:translateY(-2px)}
+.tc-icon{width:56px;height:56px;background:var(--acd);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
+.tc-label{font-size:13px;color:var(--tx2);margin-bottom:4px}
+.tc-val{font-size:28px;font-weight:900;color:var(--tx);letter-spacing:-1px;margin-bottom:4px}
+.tc-desc{font-size:13px;color:var(--tx3);line-height:1.5}
 
 /* SECTION */
-.sec{max-width:1200px;margin:0 auto;padding:80px 24px}
-.sec-head{margin-bottom:48px}
-.sec-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--ac1);margin-bottom:8px}
-.sec-title{font-family:var(--fh);font-size:40px}
-.sec-sub{color:var(--tx2);font-size:15px;margin-top:8px}
-.sec-top{display:flex;justify-content:space-between;align-items:end;margin-bottom:32px;flex-wrap:wrap;gap:16px}
+.sec{max-width:1280px;margin:0 auto;padding:64px 24px}
+.sec-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:16px}
+.sec-title{font-size:32px;font-weight:900;letter-spacing:-.5px}
+.sec-cnt{font-size:14px;color:var(--tx3)}
 
 /* FILTERS */
-.filters{display:flex;gap:6px;flex-wrap:wrap}
-.flt{padding:8px 18px;border:1px solid var(--bd);border-radius:50px;background:transparent;font-family:inherit;font-size:13px;font-weight:600;color:var(--tx2);cursor:pointer;transition:all .2s}
-.flt:hover{border-color:var(--ac1);color:var(--ac1)}
-.flt.on{background:var(--gr1);border-color:transparent;color:#fff}
+.filters{display:flex;gap:6px;margin-bottom:24px;flex-wrap:wrap}
+.flt{padding:9px 20px;border:1.5px solid var(--bd);border-radius:50px;background:#fff;font-family:inherit;font-size:13px;font-weight:600;color:var(--tx2);cursor:pointer;transition:all .15s}
+.flt:hover{border-color:var(--ac);color:var(--ac)}.flt.on{background:var(--ac);border-color:var(--ac);color:#fff}
 
 /* CARDS */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(370px,1fr));gap:16px}
-.card{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:all .3s;position:relative}
-.card::before{content:'';position:absolute;inset:0;border-radius:var(--r);opacity:0;transition:opacity .3s;background:linear-gradient(135deg,rgba(129,140,248,.08),rgba(192,132,252,.05));z-index:0}
-.card:hover{border-color:var(--bd2);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.3)}.card:hover::before{opacity:1}
-.card>*{position:relative;z-index:1}
-.card-img{width:100%;height:220px;object-fit:cover;display:block}.card-img-ph{width:100%;height:220px;background:rgba(255,255,255,.03);display:flex;align-items:center;justify-content:center;font-size:48px;color:var(--tx3)}
-.card-badges{position:absolute;top:14px;left:14px;display:flex;gap:6px;z-index:2}
-.card-seg{padding:5px 12px;border-radius:8px;font-size:11px;font-weight:700;color:#fff;backdrop-filter:blur(8px)}
-.s-off{background:rgba(99,102,241,.85)}.s-ret{background:rgba(52,211,153,.8)}.s-gab{background:rgba(251,191,36,.85)}.s-mfk{background:rgba(168,85,247,.85)}
-.card-deal{padding:5px 12px;border-radius:8px;font-size:11px;font-weight:700;background:rgba(0,0,0,.6);color:#fff;backdrop-filter:blur(8px)}
-.card-body{padding:18px 20px 20px}
-.card-title{font-size:17px;font-weight:700;margin-bottom:6px;line-height:1.3}
-.card-loc{font-size:13px;color:var(--tx2);margin-bottom:14px}
-.card-price{font-size:24px;font-weight:800;letter-spacing:-.5px;margin-bottom:4px;background:var(--gr1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.card-psub{font-size:12px;color:var(--tx3);margin-bottom:14px}
-.card-meta{display:flex;gap:6px;flex-wrap:wrap}
-.card-mt{padding:4px 10px;background:var(--sf);border:1px solid var(--bd);border-radius:8px;font-size:11px;font-weight:600;color:var(--tx2)}
-.card-empty{text-align:center;padding:80px;color:var(--tx3);font-size:16px}
-
-/* SEARCH */
-.search-wrap{background:var(--sf);border:1px solid var(--bd);border-radius:20px;padding:24px;margin-bottom:32px;backdrop-filter:blur(12px)}
-.search-row{display:flex;gap:12px;flex-wrap:wrap;align-items:end}
-.search-g{flex:1;min-width:150px}
-.search-g label{display:block;font-size:11px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
-.search-g select,.search-g input{width:100%;padding:10px 14px;border:1px solid var(--bd);border-radius:10px;background:rgba(255,255,255,.04);color:var(--tx);font-family:inherit;font-size:13px;outline:none;transition:border .2s;appearance:none}
-.search-g select{background-image:url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;cursor:pointer}
-.search-g select:focus,.search-g input:focus{border-color:var(--ac1)}
-.search-btn{padding:10px 28px;background:var(--gr1);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;height:40px;white-space:nowrap}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:16px}
+.card{background:#fff;border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:all .2s}
+.card:hover{box-shadow:var(--sh2);transform:translateY(-3px)}
+.card-img{width:100%;height:220px;object-fit:cover;display:block}.card-img-ph{width:100%;height:220px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:48px;color:var(--tx3)}
+.card-badges{position:absolute;top:12px;left:12px;display:flex;gap:6px}.card{position:relative}
+.card-seg{padding:5px 12px;border-radius:8px;font-size:11px;font-weight:700;color:#fff}
+.s-off{background:#2563eb}.s-ret{background:#059669}.s-gab{background:#d97706}.s-mfk{background:#7c3aed}
+.card-deal{padding:5px 12px;border-radius:8px;font-size:11px;font-weight:700;background:rgba(255,255,255,.9);color:var(--tx)}
+.card-body{padding:16px 20px 20px}
+.card-title{font-size:17px;font-weight:700;margin-bottom:6px;line-height:1.3}.card-loc{font-size:13px;color:var(--tx2);margin-bottom:14px}
+.card-price{font-size:24px;font-weight:900;color:var(--ac);margin-bottom:4px;letter-spacing:-.5px}.card-psub{font-size:12px;color:var(--tx3);margin-bottom:14px}
+.card-meta{display:flex;gap:6px;flex-wrap:wrap}.card-mt{padding:4px 10px;background:var(--bg2);border-radius:8px;font-size:11px;font-weight:600;color:var(--tx2)}
+.card-empty{text-align:center;padding:80px;color:var(--tx3)}
 
 /* ABOUT */
-.about-hero{text-align:center;padding:120px 24px 60px;position:relative}
-.about-hero h1{font-family:var(--fh);font-size:52px;margin-bottom:16px}.about-hero p{color:var(--tx2);font-size:18px;max-width:600px;margin:0 auto 48px}
-.about-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin-bottom:60px}
-.a-stat-n{font-size:48px;font-weight:800;background:var(--gr1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.a-stat-l{font-size:11px;color:var(--tx3);text-transform:uppercase;letter-spacing:2px;margin-top:4px}
-.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.a-card{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:28px;transition:all .3s}
-.a-card:hover{border-color:var(--ac1);transform:translateY(-4px)}
-.a-card-i{width:48px;height:48px;background:var(--sf2);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px}
-.a-card h3{font-size:17px;font-weight:700;margin-bottom:8px}.a-card p{font-size:13px;color:var(--tx2);line-height:1.6}
+.about-hero{background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff;padding:80px 24px;text-align:center}
+.about-hero h1{font-size:44px;font-weight:900;margin-bottom:12px}.about-hero p{color:rgba(255,255,255,.5);font-size:17px;max-width:560px;margin:0 auto 40px}
+.a-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap}
+.a-sn{font-size:48px;font-weight:900}.a-sl{font-size:12px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:-40px;position:relative;z-index:1}
+.a-card{background:#fff;border:1px solid var(--bd);border-radius:var(--r);padding:28px;box-shadow:var(--sh)}
+.a-card-i{width:48px;height:48px;background:var(--acd);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px}
+.a-card h3{font-size:17px;font-weight:700;margin-bottom:6px}.a-card p{font-size:13px;color:var(--tx2);line-height:1.6}
 
 /* CALC */
-.calc-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.calc-form{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:28px}
-.c-r{margin-bottom:18px}.c-r label{display:block;font-size:11px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
-.c-r input{width:100%;padding:12px 16px;border:1px solid var(--bd);border-radius:10px;background:var(--sf2);color:var(--tx);font-family:inherit;font-size:16px;outline:none}.c-r input:focus{border-color:var(--ac1)}
-.c-btn{width:100%;padding:14px;background:var(--gr1);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer}
-.calc-res{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:28px}
-.calc-res h3{font-family:var(--fh);font-size:24px;margin-bottom:24px}
-.rr{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--bd)}.rr:last-child{border:none}
-.rl{font-size:14px;color:var(--tx2)}.rv{font-size:20px;font-weight:800}.rv.hl{background:var(--gr1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.rv.gn{color:var(--gn)}
+.calc-w{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.calc-f{background:#fff;border:1px solid var(--bd);border-radius:var(--r);padding:28px}
+.c-r{margin-bottom:16px}.c-r label{display:block;font-size:11px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.c-r input{width:100%;padding:12px 16px;border:1.5px solid var(--bd);border-radius:10px;font-family:inherit;font-size:16px;color:var(--tx);background:var(--bg2);outline:none}.c-r input:focus{border-color:var(--ac);background:#fff}
+.c-btn{width:100%;padding:14px;background:var(--ac);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer}.c-btn:hover{background:var(--ac3)}
+.calc-r{background:#fff;border:1px solid var(--bd);border-radius:var(--r);padding:28px}
+.calc-r h3{font-size:22px;font-weight:800;margin-bottom:24px}
+.rr{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--bg3)}.rr:last-child{border:none}
+.rl{font-size:14px;color:var(--tx2)}.rv{font-size:20px;font-weight:800}.rv.bl{color:var(--ac)}.rv.gn{color:var(--gn)}
 
 /* CONTACT */
-.co-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.co-info h3{font-family:var(--fh);font-size:28px;margin-bottom:12px}.co-info>p{color:var(--tx2);line-height:1.7;margin-bottom:28px}
-.ci{display:flex;align-items:center;gap:16px;margin-bottom:14px;padding:16px;background:var(--sf);border:1px solid var(--bd);border-radius:12px;transition:border .2s}.ci:hover{border-color:var(--ac1)}
-.ci-i{width:44px;height:44px;background:var(--sf2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.co-w{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.co-info h3{font-size:28px;font-weight:800;margin-bottom:12px}.co-info>p{color:var(--tx2);margin-bottom:24px;line-height:1.7}
+.ci{display:flex;align-items:center;gap:14px;margin-bottom:12px;padding:14px;background:var(--bg2);border-radius:12px}
+.ci-i{width:44px;height:44px;background:var(--acd);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
 .ci-t{font-size:15px;font-weight:600}.ci-l{font-size:12px;color:var(--tx3)}
-.cform{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:28px}
-.cform h3{font-family:var(--fh);font-size:24px;margin-bottom:20px}
-.cf-r{margin-bottom:14px}
-.cf-r input,.cf-r textarea,.cf-r select{width:100%;padding:12px 16px;border:1px solid var(--bd);border-radius:10px;background:var(--sf2);color:var(--tx);font-family:inherit;font-size:14px;outline:none}.cf-r input:focus,.cf-r textarea:focus,.cf-r select:focus{border-color:var(--ac1)}
-.cf-r textarea{min-height:80px;resize:vertical}
-.cf-btn{width:100%;padding:14px;background:var(--gr1);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer}
+.cform{background:#fff;border:1px solid var(--bd);border-radius:var(--r);padding:28px}
+.cform h3{font-size:22px;font-weight:800;margin-bottom:20px}
+.cf-r{margin-bottom:12px}
+.cf-r input,.cf-r textarea,.cf-r select{width:100%;padding:11px 14px;border:1.5px solid var(--bd);border-radius:10px;font-family:inherit;font-size:14px;color:var(--tx);background:var(--bg2);outline:none}.cf-r input:focus,.cf-r textarea:focus,.cf-r select:focus{border-color:var(--ac);background:#fff}
+.cf-r textarea{min-height:70px;resize:vertical}
+.cf-btn{width:100%;padding:14px;background:var(--ac);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer}.cf-btn:hover{background:var(--ac3)}
 
 /* MODAL */
-.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);z-index:200;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto}.mo.sh{display:flex}
-.ml{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;max-width:740px;width:100%;overflow:hidden;animation:fadeUp .4s ease}
-.ml-top{position:relative}.ml-photo{width:100%;height:360px;object-fit:cover;display:block}
-.ml-close{position:absolute;top:16px;right:16px;width:36px;height:36px;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.1);border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff}
-.ml-body{padding:28px}
-.ml-body h2{font-family:var(--fh);font-size:28px;margin-bottom:6px}.ml-loc{font-size:14px;color:var(--tx2);margin-bottom:20px}
-.ml-gal{display:flex;gap:8px;margin-bottom:20px;overflow-x:auto;padding-bottom:8px}.ml-gal img{width:100px;height:68px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:border .15s;flex-shrink:0;opacity:.7}.ml-gal img:hover{border-color:var(--ac1);opacity:1}
-.ml-price{font-size:28px;font-weight:800;background:var(--gr1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px}.ml-psub{font-size:13px;color:var(--tx3);margin-bottom:20px}
-.ml-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:20px}
-.ml-st{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:12px}.ml-sl{font-size:10px;color:var(--tx3);text-transform:uppercase;letter-spacing:.5px}.ml-sv{font-size:15px;font-weight:700;margin-top:2px}
+.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);z-index:200;align-items:flex-start;justify-content:center;padding:32px 16px;overflow-y:auto}.mo.sh{display:flex}
+.ml{background:#fff;border-radius:20px;max-width:760px;width:100%;box-shadow:var(--sh2);overflow:hidden;animation:su .3s ease}
+@keyframes su{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.ml-top{position:relative}.ml-photo{width:100%;height:360px;object-fit:cover}.ml-close{position:absolute;top:14px;right:14px;width:36px;height:36px;background:#fff;border:none;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--sh)}
+.ml-body{padding:24px 28px 28px}
+.ml-body h2{font-size:26px;font-weight:800;margin-bottom:6px}.ml-loc{font-size:14px;color:var(--tx2);margin-bottom:20px}
+.ml-gal{display:flex;gap:8px;margin-bottom:20px;overflow-x:auto;padding-bottom:6px}.ml-gal img{width:90px;height:64px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent;flex-shrink:0;transition:border .15s}.ml-gal img:hover{border-color:var(--ac)}
+.ml-price{font-size:28px;font-weight:900;color:var(--ac);margin-bottom:4px}.ml-psub{font-size:13px;color:var(--tx3);margin-bottom:20px}
+.ml-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:20px}
+.ml-st{background:var(--bg2);border-radius:10px;padding:12px}.ml-sl{font-size:10px;color:var(--tx3);text-transform:uppercase;letter-spacing:.5px}.ml-sv{font-size:15px;font-weight:700;margin-top:2px}
 .ml-desc{color:var(--tx2);line-height:1.7;margin-bottom:24px;white-space:pre-line;font-size:14px}
-.ml-btns{display:flex;gap:12px}.ml-btns button{flex:1;padding:14px;border-radius:12px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;border:none;transition:all .2s}
-.ml-bp{background:var(--gr1);color:#fff}.ml-bo{background:var(--sf);color:var(--tx);border:1px solid var(--bd)}
+.ml-btns{display:flex;gap:12px}.ml-btns button{flex:1;padding:14px;border-radius:12px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;border:none}
+.ml-bp{background:var(--ac);color:#fff}.ml-bo{background:var(--bg2);color:var(--tx)}
 
 /* FOOTER */
-.footer{border-top:1px solid var(--bd);padding:60px 24px 24px;position:relative;z-index:1}
-.ft-in{max-width:1200px;margin:0 auto}
+.footer{background:#0f172a;color:#fff;padding:60px 24px 24px}
+.ft-in{max-width:1280px;margin:0 auto}
 .ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
-.ft-brand{font-family:var(--fh);font-size:20px;margin-bottom:12px}.ft-desc{font-size:13px;color:var(--tx3);line-height:1.7}
-.ft-col h4{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--tx3);margin-bottom:16px}.ft-col a{display:block;color:var(--tx2);font-size:13px;margin-bottom:10px;cursor:pointer;transition:color .2s}.ft-col a:hover{color:var(--ac1)}
-.ft-bot{border-top:1px solid var(--bd);padding-top:20px;text-align:center;font-size:12px;color:var(--tx3)}
+.ft-brand{font-size:22px;font-weight:800;margin-bottom:12px}.ft-desc{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7}
+.ft-col h4{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.3);margin-bottom:16px}.ft-col a{display:block;color:rgba(255,255,255,.6);font-size:13px;margin-bottom:10px;cursor:pointer}.ft-col a:hover{color:#fff}
+.ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;text-align:center;font-size:12px;color:rgba(255,255,255,.25)}
 
-@media(max-width:768px){.nav{border-radius:16px;padding:6px}.nav-links{display:none}.nav-bur{display:block}.nav-links.op{display:flex;flex-direction:column;position:fixed;top:72px;left:16px;right:16px;background:rgba(17,17,20,.95);backdrop-filter:blur(20px);border:1px solid var(--bd);border-radius:16px;padding:12px;z-index:99}.grid{grid-template-columns:1fr}.calc-wrap,.co-wrap{grid-template-columns:1fr}.ft-grid{grid-template-columns:1fr 1fr}.about-grid{grid-template-columns:1fr}.search-row{flex-direction:column}.search-g{min-width:100%}.ml-photo{height:220px}}
+@media(max-width:900px){.hero h1{font-size:32px}.grid{grid-template-columns:1fr}.trust-grid{grid-template-columns:1fr}.calc-w,.co-w{grid-template-columns:1fr}.ft-grid{grid-template-columns:1fr 1fr}.about-grid{grid-template-columns:1fr}.nav-links{display:none}.nav-bur{display:block}.nav-links.op{display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:#fff;padding:12px 24px;border-bottom:1px solid var(--bd);box-shadow:var(--sh);z-index:99}.search-body{flex-direction:column}.sg{min-width:100%}}
 </style>
 </head>
 <body>
-<div class="glow"><div class="glow-1"></div><div class="glow-2"></div></div>
 
-<nav class="nav">
-<div class="nav-logo" onclick="go('home')">Pulsar</div>
-<div class="nav-links" id="nv">
-<a onclick="go('home')" class="on" data-p="home">Главная</a>
-<a onclick="go('catalog')" data-p="catalog">Каталог</a>
-<a onclick="go('about')" data-p="about">О нас</a>
-<a onclick="go('calc')" data-p="calc">Калькулятор</a>
-<a onclick="go('contact')" data-p="contact">Контакты</a>
+<noscript><p style="text-align:center;padding:40px">Для работы сайта необходим JavaScript. Пожалуйста, включите его в настройках браузера.</p></noscript>
+<header>
+<nav class="nav" aria-label="Основная навигация"><div class="nav-in">
+<a class="nav-logo" href="#home" onclick="go('home');return false" aria-label="Pulsar Realty — Главная"><svg viewBox="0 0 36 36" fill="none" role="img" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#1a56db"/><path d="M10 18h16M18 10v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span>PULSAR</span></a>
+<div class="nav-links" id="nv" role="menubar">
+<a href="#home" onclick="go('home');return false" class="on" data-p="home" role="menuitem">Главная</a>
+<a href="#catalog" onclick="go('catalog');return false" data-p="catalog" role="menuitem">Каталог</a>
+<a href="#about" onclick="go('about');return false" data-p="about" role="menuitem">О компании</a>
+<a href="#calc" onclick="go('calc');return false" data-p="calc" role="menuitem">Калькулятор</a>
+<a href="#contact" onclick="go('contact');return false" data-p="contact" role="menuitem">Контакты</a>
 </div>
-<button class="nav-cta" onclick="go('contact')">Заявка</button>
-<button class="nav-bur" onclick="document.getElementById('nv').classList.toggle('op')">☰</button>
-</nav>
+<div class="nav-r">
+<a class="nav-ph" href="tel:+7XXXXXXXXXX" aria-label="Позвонить">+7 (XXX) XXX-XX-XX</a>
+<button class="nav-cta" onclick="go('contact')" aria-label="Оставить заявку на подбор объекта">Оставить заявку</button>
+</div>
+<button class="nav-bur" onclick="document.getElementById('nv').classList.toggle('op')" aria-label="Открыть меню" aria-expanded="false">☰</button>
+</div></nav>
+</header>
+<main>
 
-<div class="pg on" id="pg-home"><div class="hero"><div class="hero-in">
-<div class="hero-badge"><span></span> Объекты обновляются из CRM в реальном времени</div>
-<h1>Инвестируйте в <span>недвижимость</span> уверенно</h1>
-<p class="hero-sub">Офисы, ритейл, ГАБ — каждый объект проверен, доходность посчитана, риски оценены.</p>
-<div class="hero-btns">
-<button class="btn btn-g" onclick="go('catalog')">Смотреть объекты →</button>
-<button class="btn btn-o" onclick="go('calc')">Калькулятор доходности</button>
-</div>
-<div class="hero-stats">
-<div class="hero-stat"><div class="hero-stat-n" id="hs0">—</div><div class="hero-stat-l">Объектов</div></div>
-<div class="hero-stat"><div class="hero-stat-n">12%</div><div class="hero-stat-l">Ср. доходность</div></div>
-<div class="hero-stat"><div class="hero-stat-n">200+</div><div class="hero-stat-l">Сделок</div></div>
-</div>
-</div></div></div>
+<!-- HOME -->
+<section class="pg on" id="pg-home" aria-label="Главная страница">
+<div class="hero"><div class="hero-bg" role="img" aria-label="Современный бизнес-центр в Москве"></div><div class="hero-in">
+<h1>Коммерческая недвижимость <span>в Москве и МО</span></h1>
+<p class="hero-sub">Офисы, торговые помещения, арендный бизнес — все объекты с полной аналитикой</p>
 
-<div class="pg" id="pg-catalog"><div class="sec">
-<div class="sec-head"><div class="sec-label">Каталог</div><div class="sec-title">Актуальные объекты</div><div class="sec-sub">Данные подтягиваются напрямую из CRM</div></div>
-<div class="search-wrap"><div class="search-row">
-<div class="search-g"><label>Сегмент</label><select id="sSeg" onchange="doSearch()"><option value="">Все</option></select></div>
-<div class="search-g"><label>Сделка</label><select id="sDeal" onchange="doSearch()"><option value="">Все</option><option>Аренда</option><option>Продажа</option></select></div>
-<div class="search-g"><label>Площадь от, м²</label><input id="sArea" type="number" placeholder="100" onchange="doSearch()"></div>
-<div class="search-g"><label>Поиск</label><input id="sLoc" placeholder="Район, метро, адрес..." oninput="doSearch()"></div>
-<button class="search-btn" onclick="doSearch()">Найти</button>
+<div class="search-card">
+<div class="search-tabs">
+<button class="stab on" onclick="setDeal('',this)">Все объекты</button>
+<button class="stab" onclick="setDeal('Продажа',this)">Купить</button>
+<button class="stab" onclick="setDeal('Аренда',this)">Арендовать</button>
+</div>
+<div class="search-cats" id="scats"></div>
+<div class="search-body">
+<div class="sg"><label>Площадь от, м²</label><input id="sArea" type="number" placeholder="100"></div>
+<div class="sg"><label>Район / Метро</label><input id="sLoc" placeholder="Поиск..."></div>
+<button class="sbtn" onclick="doSearch()">Показать <span id="srcnt"></span> объектов</button>
+</div>
+<div class="search-links" id="slinks"></div>
+</div>
 </div></div>
-<div class="sec-top"><div class="filters" id="flts"></div><div style="font-size:13px;color:var(--tx3)" id="cnt"></div></div>
+
+<!-- TRUST -->
+<div class="trust"><div class="trust-in">
+<h2>Почему нам доверяют</h2>
+<div class="trust-grid">
+<div class="trust-card"><div class="tc-icon">📊</div><div><div class="tc-label">Объектов в базе</div><div class="tc-val" id="ts1">—</div><div class="tc-desc">Офисы, ритейл, ГАБ — все с полной аналитикой</div></div></div>
+<div class="trust-card"><div class="tc-icon">⚡</div><div><div class="tc-label">Средняя доходность</div><div class="tc-val">12%</div><div class="tc-desc">По портфелю объектов ГАБ</div></div></div>
+<div class="trust-card"><div class="tc-icon">🤝</div><div><div class="tc-label">Закрытых сделок</div><div class="tc-val">200+</div><div class="tc-desc">Полное сопровождение от звонка до сделки</div></div></div>
+<div class="trust-card"><div class="tc-icon">🏢</div><div><div class="tc-label">На рынке</div><div class="tc-val">8 лет</div><div class="tc-desc">Экспертиза в коммерческой недвижимости</div></div></div>
+<div class="trust-card"><div class="tc-icon">✅</div><div><div class="tc-label">Проверка объектов</div><div class="tc-val">100%</div><div class="tc-desc">Юридическая чистота, история арендатора</div></div></div>
+<div class="trust-card"><div class="tc-icon">📈</div><div><div class="tc-label">Инвестиции клиентов</div><div class="tc-val">> 5 млрд ₽</div><div class="tc-desc">Помогаем вкладывать в доходную недвижимость</div></div></div>
+</div></div></div>
+</div>
+
+<!-- CATALOG -->
+<section class="pg" id="pg-catalog" aria-label="Каталог объектов"><div class="sec">
+<div class="sec-top"><div class="sec-title">Объекты</div><div class="sec-cnt" id="cnt"></div></div>
+<div class="filters" id="flts"></div>
 <div class="grid" id="grd"></div>
 </div></div>
 
-<div class="pg" id="pg-about"><div class="about-hero">
-<h1>Pulsar Realty</h1>
-<p>Экспертиза, аналитика и сопровождение сделок с коммерческой недвижимостью</p>
-<div class="about-stats">
-<div><div class="a-stat-n" id="as1">—</div><div class="a-stat-l">Объектов</div></div>
-<div><div class="a-stat-n">200+</div><div class="a-stat-l">Сделок</div></div>
-<div><div class="a-stat-n">12%</div><div class="a-stat-l">Ср. доходность</div></div>
-<div><div class="a-stat-n">8 лет</div><div class="a-stat-l">На рынке</div></div>
+<!-- ABOUT -->
+<section class="pg" id="pg-about" aria-label="О компании">
+<div class="about-hero"><h1>Pulsar Realty</h1><p>Экспертиза, аналитика и сопровождение сделок с коммерческой недвижимостью Москвы</p>
+<div class="a-stats">
+<div><div class="a-sn" id="as1">—</div><div class="a-sl">Объектов</div></div>
+<div><div class="a-sn">200+</div><div class="a-sl">Сделок</div></div>
+<div><div class="a-sn">12%</div><div class="a-sl">Доходность</div></div>
+<div><div class="a-sn">8 лет</div><div class="a-sl">На рынке</div></div>
 </div></div>
 <div class="sec"><div class="about-grid">
-<div class="a-card"><div class="a-card-i">📊</div><h3>Полная аналитика</h3><p>Cap Rate, МАП, ГАП, индексация, окупаемость — все цифры до просмотра.</p></div>
+<div class="a-card"><div class="a-card-i">📊</div><h3>Полная аналитика</h3><p>Cap Rate, МАП, ГАП, индексация, окупаемость — до просмотра объекта.</p></div>
 <div class="a-card"><div class="a-card-i">✅</div><h3>Проверка объектов</h3><p>Юридическая чистота, история арендатора, документы.</p></div>
 <div class="a-card"><div class="a-card-i">🤝</div><h3>Сопровождение</h3><p>От подбора до подписания договора и передачи ключей.</p></div>
 <div class="a-card"><div class="a-card-i">💡</div><h3>Инвест-консалтинг</h3><p>Оценка доходности, анализ рисков, выбор стратегии.</p></div>
 </div></div></div>
 
-<div class="pg" id="pg-calc"><div class="sec">
-<div class="sec-head"><div class="sec-label">Инструмент</div><div class="sec-title">Калькулятор доходности</div></div>
-<div class="calc-wrap">
-<div class="calc-form">
-<div class="c-r"><label>Стоимость, ₽</label><input id="cp" value="50 000 000" oninput="fi(this)"></div>
-<div class="c-r"><label>Аренда/мес, ₽</label><input id="cre" value="500 000" oninput="fi(this)"></div>
-<div class="c-r"><label>Расходы/мес, ₽</label><input id="ce" value="50 000" oninput="fi(this)"></div>
-<div class="c-r"><label>Индексация, %</label><input id="cix" value="7"></div>
-<button class="c-btn" onclick="cc()">Рассчитать</button>
-</div>
-<div class="calc-res"><h3>Результат</h3>
+<!-- CALC -->
+<section class="pg" id="pg-calc" aria-label="Калькулятор доходности"><div class="sec">
+<div class="sec-title" style="margin-bottom:32px">Калькулятор доходности</div>
+<div class="calc-w">
+<div class="calc-f"><div class="c-r"><label>Стоимость, ₽</label><input id="cp" value="50 000 000" oninput="fi(this)"></div><div class="c-r"><label>Аренда/мес, ₽</label><input id="cr2" value="500 000" oninput="fi(this)"></div><div class="c-r"><label>Расходы/мес, ₽</label><input id="cx" value="50 000" oninput="fi(this)"></div><div class="c-r"><label>Индексация, %</label><input id="ci2" value="7"></div><button class="c-btn" onclick="cc()">Рассчитать</button></div>
+<div class="calc-r"><h3>Результат</h3>
 <div class="rr"><span class="rl">Годовой доход</span><span class="rv" id="r1">—</span></div>
-<div class="rr"><span class="rl">Доходность</span><span class="rv hl" id="r2">—</span></div>
+<div class="rr"><span class="rl">Доходность</span><span class="rv bl" id="r2">—</span></div>
 <div class="rr"><span class="rl">Окупаемость</span><span class="rv" id="r3">—</span></div>
 <div class="rr"><span class="rl">Доход через 5 лет</span><span class="rv gn" id="r4">—</span></div>
 <div class="rr"><span class="rl">Итого за 10 лет</span><span class="rv gn" id="r5">—</span></div>
 </div></div></div></div>
 
-<div class="pg" id="pg-contact"><div class="sec">
-<div class="sec-head"><div class="sec-label">Связь</div><div class="sec-title">Оставить заявку</div></div>
-<div class="co-wrap">
-<div class="co-info"><h3>Контакты</h3><p>Расскажите что ищете — мы подберём лучшие варианты.</p>
+<!-- CONTACT -->
+<section class="pg" id="pg-contact" aria-label="Контакты и заявка"><div class="sec">
+<div class="sec-title" style="margin-bottom:32px">Оставить заявку</div>
+<div class="co-w">
+<div class="co-info"><h3>Контакты</h3><p>Расскажите что ищете — мы подберём лучшие варианты и организуем просмотр.</p>
+<div class="ci"><div class="ci-i">📱</div><div><div class="ci-t">+7 (XXX) XXX-XX-XX</div><div class="ci-l">Ежедневно 9:00–21:00</div></div></div>
 <div class="ci"><div class="ci-i">💬</div><div><div class="ci-t">@pulsar_realty</div><div class="ci-l">Telegram канал</div></div></div>
 <div class="ci"><div class="ci-i">📧</div><div><div class="ci-t">info@pulsar-realty.ru</div><div class="ci-l">Email</div></div></div>
-<div class="ci"><div class="ci-i">📍</div><div><div class="ci-t">Москва</div><div class="ci-l">Офис</div></div></div>
 </div>
 <div class="cform"><h3>Заявка на подбор</h3>
-<div class="cf-r"><input placeholder="Имя" id="fn"></div>
+<div class="cf-r"><input placeholder="Ваше имя" id="fn"></div>
 <div class="cf-r"><input placeholder="Телефон" id="fp"></div>
 <div class="cf-r"><input placeholder="Email" id="fe"></div>
-<div class="cf-r"><select id="ftp"><option value="">Что ищете?</option><option>Офис в аренду</option><option>Офис на продажу</option><option>Стрит-ритейл</option><option>ГАБ</option><option>Другое</option></select></div>
+<div class="cf-r"><select id="ftp"><option value="">Что ищете?</option><option>Арендный бизнес (ГАБ)</option><option>Офис в аренду</option><option>Офис на продажу</option><option>Торговое помещение</option><option>Другое</option></select></div>
 <div class="cf-r"><textarea placeholder="Бюджет, площадь, пожелания..." id="fm"></textarea></div>
-<button class="cf-btn" onclick="sf()">Отправить →</button>
+<button class="cf-btn" onclick="sf()">Отправить заявку</button>
 </div></div></div></div>
 
-<footer class="footer"><div class="ft-in"><div class="ft-grid">
-<div><div class="ft-brand">Pulsar Realty</div><div class="ft-desc">Коммерческая недвижимость Москвы и МО. Инвестиции с проверенной доходностью.</div></div>
-<div class="ft-col"><h4>Разделы</h4><a onclick="go('home')">Главная</a><a onclick="go('catalog')">Каталог</a><a onclick="go('about')">О нас</a></div>
-<div class="ft-col"><h4>Объекты</h4><a onclick="go('catalog')">Офисы</a><a onclick="go('catalog')">Ритейл</a><a onclick="go('catalog')">ГАБ</a></div>
-<div class="ft-col"><h4>Связь</h4><a href="https://t.me/pulsar_realty" target="_blank">Telegram</a><a onclick="go('contact')">Заявка</a></div>
-</div><div class="ft-bot">© 2026 Pulsar Realty</div></div></footer>
+</main>
+<footer class="footer" role="contentinfo"><div class="ft-in"><div class="ft-grid">
+<div><div class="ft-brand">PULSAR REALTY</div><div class="ft-desc">Коммерческая недвижимость Москвы и МО. Офисы, ритейл, арендный бизнес.</div></div>
+<div class="ft-col"><h4>Купить</h4><a onclick="go('catalog')">Арендный бизнес</a><a onclick="go('catalog')">Офис</a><a onclick="go('catalog')">Торговое помещение</a></div>
+<div class="ft-col"><h4>Компания</h4><a onclick="go('about')">О нас</a><a onclick="go('calc')">Калькулятор</a><a href="https://t.me/pulsar_realty" target="_blank">Telegram</a></div>
+<div class="ft-col"><h4>Контакты</h4><a>+7 (XXX) XXX-XX-XX</a><a>info@pulsar-realty.ru</a><a onclick="go('contact')">Заявка</a></div>
+</div><div class="ft-bot">© 2026 Pulsar Realty. Все права защищены.</div></div></footer>
 
-<div class="mo" id="pm"><div class="ml" id="pmc"></div></div>
+<div class="mo" id="pm" role="dialog" aria-modal="true" aria-label="Карточка объекта"><div class="ml" id="pmc"></div></div>
 
 <script>
 const SB="https://zitdqwseavknnominhpu.supabase.co",SK="sb_publishable_s2wUsNEG0nZ88pznfwvowA_DUvUbkW7",BT="8487310978:AAGgvnjDKcKXkcnBmD1MFaqDYt0AF91Sgow",AC="8114336623";
-let D=[],F="all";
+let D=[],F="all",DEAL="";
 const fm=n=>n?new Intl.NumberFormat("ru-RU").format(Math.round(n)):"";
 const fP=n=>{if(!n||n<=0)return"";if(n>=1e9)return(n/1e9).toFixed(2)+" млрд ₽";if(n>=1e6)return(n/1e6).toFixed(1)+" млн ₽";return fm(n)+" ₽"};
 
 async function ld(){try{
 const r=await fetch(SB+"/rest/v1/properties?select=*&order=id",{headers:{apikey:SK,Authorization:"Bearer "+SK}});
 if(!r.ok)throw new Error(r.status);D=await r.json();
-document.getElementById("hs0").textContent=D.length+"+";document.getElementById("as1").textContent=D.length+"+";
+document.getElementById("ts1").textContent=D.length+"+";document.getElementById("as1").textContent=D.length+"+";document.getElementById("srcnt").textContent=D.length;
 const segs=[...new Set(D.map(p=>p.segment).filter(Boolean))];
-const sel=document.getElementById("sSeg");segs.forEach(s=>{const o=document.createElement("option");o.value=s;o.textContent=s;sel.appendChild(o)});
-bf();rc();
+let cats='<button class="scat on" onclick="setCat(\'\',this)">Все</button>';
+segs.forEach(s=>cats+='<button class="scat" onclick="setCat(\''+s+'\',this)">'+s+'</button>');
+document.getElementById("scats").innerHTML=cats;
+let links="";segs.forEach(s=>{const c=D.filter(p=>p.segment===s).length;links+='<span class="slink" onclick="go(\'catalog\');sf2(\''+s+'\')">'+s+' ('+c+')</span>'});
+document.getElementById("slinks").innerHTML=links;
+bf();rc();genJsonLd();
 }catch(e){console.error(e)}}
 
-function bf(){const segs=[...new Set(D.map(p=>p.segment).filter(Boolean))];let h='<button class="flt on" onclick="sf2(\'all\',this)">Все</button>';segs.forEach(s=>{h+='<button class="flt" onclick="sf2(\''+s+'\',this)">'+s+'</button>'});document.getElementById("flts").innerHTML=h}
-function sf2(f,b){F=f;document.querySelectorAll(".flt").forEach(x=>x.classList.remove("on"));b.classList.add("on");rc()}
+function genJsonLd(){
+  const el=document.getElementById("dynamic-jsonld");
+  if(el)el.remove();
+  const listings=D.filter(p=>p.status!=="Архив").slice(0,20).map(p=>{
+    const ar=ga(p);const ph=gph(p);
+    return{
+      "@type":"RealEstateListing",
+      "name":p.title||"Объект ID "+p.id,
+      "description":(p.description||p.title||"").substring(0,200),
+      "url":"https://kkarpovtseva769-bit.github.io/pulsar-app/#obj-"+p.id,
+      "datePosted":p.created||"2026-01-01",
+      ...(ph?{"image":ph}:{}),
+      "address":{"@type":"PostalAddress","addressLocality":p.city||"Москва","streetAddress":p.address||"","addressCountry":"RU"},
+      ...(p.price>0?{"offers":{"@type":"Offer","price":p.price,"priceCurrency":"RUB","availability":"https://schema.org/InStock"}}:{}),
+      ...(ar>0?{"floorSize":{"@type":"QuantitativeValue","value":ar,"unitCode":"MTK"}}:{})
+    };
+  });
+  const script=document.createElement("script");
+  script.type="application/ld+json";script.id="dynamic-jsonld";
+  script.textContent=JSON.stringify({"@context":"https://schema.org","@type":"ItemList","name":"Коммерческая недвижимость Pulsar Realty","numberOfItems":D.length,"itemListElement":listings.map((l,i)=>({"@type":"ListItem","position":i+1,"item":l}))});
+  document.head.appendChild(script);
+}
+
+function setDeal(d,btn){DEAL=d;document.querySelectorAll(".stab").forEach(b=>b.classList.remove("on"));btn.classList.add("on");updateCnt()}
+function setCat(s,btn){F=s||"all";document.querySelectorAll(".scat").forEach(b=>b.classList.remove("on"));btn.classList.add("on");updateCnt()}
+function updateCnt(){const items=D.filter(p=>{if(F!=="all"&&p.segment!==F)return false;if(DEAL&&p.dealType!==DEAL)return false;return true});document.getElementById("srcnt").textContent=items.length}
+
+function bf(){const segs=[...new Set(D.map(p=>p.segment).filter(Boolean))];let h='<button class="flt on" onclick="sf2(\'all\')">Все ('+D.length+')</button>';segs.forEach(s=>{h+='<button class="flt" onclick="sf2(\''+s+'\')">'+s+' ('+D.filter(p=>p.segment===s).length+')</button>'});document.getElementById("flts").innerHTML=h}
+function sf2(f){F=f;document.querySelectorAll(".flt").forEach(x=>x.classList.remove("on"));event&&event.target&&event.target.classList.add("on");rc()}
 function ga(p){return Number(p.blockArea)||Number(p.area)||Number(p.typicalFloorArea)||0}
 function gp(p){if(p.dealType==="Продажа"&&p.price>0)return fP(p.price);if(p.rentRate>0)return fm(p.rentRate)+" ₽/м²/год";return""}
 function gs(p){const a=[];if(p.mapRate>0)a.push("МАП: "+fm(p.mapRate)+" ₽");if(p.capRate>0)a.push("Cap Rate: "+p.capRate+"%");if(p.indexation)a.push("Инд: "+p.indexation);return a.join(" · ")}
 function gph(p){return(p.photos&&p.photos.length)?p.photos[0]:""}
 
-function doSearch(){const seg=document.getElementById("sSeg").value,deal=document.getElementById("sDeal").value,area=Number(document.getElementById("sArea").value)||0,loc=document.getElementById("sLoc").value.toLowerCase();F="search";go("catalog");
-const items=D.filter(p=>{if(seg&&p.segment!==seg)return false;if(deal&&p.dealType!==deal)return false;if(area&&ga(p)<area)return false;if(loc){const s=((p.address||"")+(p.metro||"")+(p.district||"")+(p.city||"")).toLowerCase();if(!s.includes(loc))return false}return true});
+function doSearch(){const area=Number(document.getElementById("sArea").value)||0,loc=document.getElementById("sLoc").value.toLowerCase();go("catalog");
+const items=D.filter(p=>{if(F!=="all"&&p.segment!==F)return false;if(DEAL&&p.dealType!==DEAL)return false;if(area&&ga(p)<area)return false;if(loc){const s=((p.address||"")+(p.metro||"")+(p.district||"")+(p.city||"")).toLowerCase();if(!s.includes(loc))return false}return true});
 document.getElementById("cnt").textContent="Найдено: "+items.length;ri(items,document.getElementById("grd"))}
 
-function rc(){const items=D.filter(p=>F==="all"||F==="search"||p.segment===F);document.getElementById("cnt").textContent=items.length+" объектов";ri(items,document.getElementById("grd"))}
+function rc(){const items=D.filter(p=>F==="all"||p.segment===F);document.getElementById("cnt").textContent=items.length+" объектов";ri(items,document.getElementById("grd"))}
 
 function ri(items,g){if(!items.length){g.innerHTML='<div class="card-empty">Объекты не найдены</div>';return}
-g.innerHTML=items.map(p=>{const sc={"Офисы":"s-off","Ритейл":"s-ret","ГАБ":"s-gab","МФК":"s-mfk"}[p.segment]||"s-off";const ph=gph(p);const pht=ph?'<img class="card-img" src="'+ph+'" loading="lazy" onerror="this.outerHTML=\'<div class=card-img-ph>🏢</div>\'">':'<div class="card-img-ph">🏢</div>';const ar=ga(p);const fl=p.floor?(p.totalFloors?p.floor+"/"+p.totalFloors:p.floor):"";
-return'<div class="card" onclick="op('+p.id+')"><div class="card-badges"><span class="card-seg '+sc+'">'+(p.segment||"")+'</span><span class="card-deal">'+(p.dealType||"")+'</span></div>'+pht+'<div class="card-body"><div class="card-title">'+(p.title||"ID "+p.id)+'</div><div class="card-loc">📍 '+(p.city||"")+", "+(p.address||"")+(p.metro?" · м. "+p.metro:"")+'</div><div class="card-price">'+gp(p)+'</div><div class="card-psub">'+gs(p)+'</div><div class="card-meta">'+(ar?'<span class="card-mt">'+fm(ar)+' м²</span>':'')+(p.officeClass?'<span class="card-mt">'+p.officeClass+'</span>':'')+(fl?'<span class="card-mt">Этаж '+fl+'</span>':'')+(p.tenant?'<span class="card-mt">'+p.tenant+'</span>':'')+(p.payback>0?'<span class="card-mt">'+p.payback+' лет</span>':'')+'</div></div></div>'}).join("")}
+g.innerHTML=items.map(p=>{const sc={"Офисы":"s-off","Ритейл":"s-ret","ГАБ":"s-gab","МФК":"s-mfk"}[p.segment]||"s-off";const ph=gph(p);const altTx=(p.title||"Объект")+" — "+(p.segment||"")+" "+(p.city||"");const pht=ph?'<img class="card-img" src="'+ph+'" loading="lazy" alt="'+altTx+'" onerror="this.outerHTML=\'<div class=card-img-ph>🏢</div>\'">':'<div class="card-img-ph" role="img" aria-label="'+altTx+'">🏢</div>';const ar=ga(p);const fl=p.floor?(p.totalFloors?p.floor+"/"+p.totalFloors:p.floor):"";
+return'<article class="card" onclick="op('+p.id+')" itemscope itemtype="https://schema.org/RealEstateListing"><div class="card-badges"><span class="card-seg '+sc+'">'+(p.segment||"")+'</span><span class="card-deal">'+(p.dealType||"")+'</span></div>'+pht+'<div class="card-body"><h3 class="card-title" itemprop="name">'+(p.title||"ID "+p.id)+'</h3><div class="card-loc" itemprop="address">📍 '+(p.city||"")+", "+(p.address||"")+(p.metro?" · м. "+p.metro:"")+'</div><div class="card-price" itemprop="price">'+gp(p)+'</div><div class="card-psub">'+gs(p)+'</div><div class="card-meta">'+(ar?'<span class="card-mt">'+fm(ar)+' м²</span>':'')+(p.officeClass?'<span class="card-mt">'+p.officeClass+'</span>':'')+(fl?'<span class="card-mt">Этаж '+fl+'</span>':'')+(p.tenant?'<span class="card-mt">'+p.tenant+'</span>':'')+(p.payback>0?'<span class="card-mt">Окуп. '+p.payback+' лет</span>':'')+'</div></div></article>'}).join("")}
 
 function op(id){const p=D.find(x=>x.id===id);if(!p)return;const m=document.getElementById("pmc");const ph=gph(p);const ar=ga(p);const fl=p.floor?(p.totalFloors?p.floor+"/"+p.totalFloors:p.floor):"";
 let gl="";if(p.photos&&p.photos.length>1)gl='<div class="ml-gal">'+p.photos.map(u=>'<img src="'+u+'" onclick="document.getElementById(\'mph\').src=\''+u+'\'" loading="lazy">').join("")+"</div>";
 let st="";const as=(l,v)=>{if(v)st+='<div class="ml-st"><div class="ml-sl">'+l+'</div><div class="ml-sv">'+v+'</div></div>'};
 as("Класс",p.officeClass);as("Площадь",ar?fm(ar)+" м²":"");as("Этаж",fl);as("Район",p.district);as("Метро",p.metro);as("Арендатор",p.tenant);as("Cap Rate",p.capRate>0?p.capRate+"%":"");as("Окупаемость",p.payback>0?p.payback+" лет":"");as("МАП",p.mapRate>0?fm(p.mapRate)+" ₽/мес":"");as("ГАП",p.gapRate>0?fm(p.gapRate)+" ₽/год":"");as("Индексация",p.indexation);as("Отделка",p.fitOut||p.officeFinish);
-m.innerHTML='<div class="ml-top">'+(ph?'<img class="ml-photo" src="'+ph+'" id="mph">':'')+'<button class="ml-close" onclick="cl()">✕</button></div><div class="ml-body"><h2>'+(p.title||"")+'</h2><div class="ml-loc">📍 '+(p.city||"")+", "+(p.address||"")+(p.metro?" · м. "+p.metro:"")+'</div>'+gl+'<div class="ml-price">'+gp(p)+'</div><div class="ml-psub">'+gs(p)+'</div><div class="ml-grid">'+st+'</div>'+(p.description?'<div class="ml-desc">'+p.description+'</div>':'')+'<div class="ml-btns"><button class="ml-bp" onclick="go(\'contact\');cl()">Оставить заявку →</button><button class="ml-bo" onclick="cl()">Закрыть</button></div></div>';
+m.innerHTML='<div class="ml-top">'+(ph?'<img class="ml-photo" src="'+ph+'" id="mph" alt="'+(p.title||"Объект")+' — фото">':'')+'<button class="ml-close" onclick="cl()" aria-label="Закрыть">✕</button></div><div class="ml-body"><h2>'+(p.title||"")+'</h2><div class="ml-loc">📍 '+(p.city||"")+", "+(p.address||"")+(p.metro?" · м. "+p.metro:"")+'</div>'+gl+'<div class="ml-price">'+gp(p)+'</div><div class="ml-psub">'+gs(p)+'</div><div class="ml-grid">'+st+'</div>'+(p.description?'<div class="ml-desc">'+p.description+'</div>':'')+'<div class="ml-btns"><button class="ml-bp" onclick="go(\'contact\');cl()">Оставить заявку</button><button class="ml-bo" onclick="cl()">Закрыть</button></div></div>';
 document.getElementById("pm").classList.add("sh")}
 function cl(){document.getElementById("pm").classList.remove("sh")}
 document.getElementById("pm").addEventListener("click",function(e){if(e.target===this)cl()});
 
-function go(p){document.querySelectorAll(".pg").forEach(x=>x.classList.remove("on"));document.getElementById("pg-"+p).classList.add("on");document.querySelectorAll(".nav-links a").forEach(a=>a.classList.toggle("on",a.dataset.p===p));document.getElementById("nv").classList.remove("op");if(p!=="catalog")window.scrollTo(0,0);if(p==="catalog"&&F!=="search"){F="all";rc()}}
+function go(p){document.querySelectorAll(".pg").forEach(x=>x.classList.remove("on"));document.getElementById("pg-"+p).classList.add("on");document.querySelectorAll(".nav-links a").forEach(a=>a.classList.toggle("on",a.dataset.p===p));document.getElementById("nv").classList.remove("op");window.scrollTo(0,0);if(p==="catalog"){F="all";rc()}}
 function nv(id){return parseFloat(document.getElementById(id).value.replace(/\s/g,"").replace(",","."))||0}
 function fi(el){let v=el.value.replace(/[^\d]/g,"");if(v)el.value=parseInt(v).toLocaleString("ru-RU").replace(/,/g," ")}
-function cc(){const pr=nv("cp"),re=nv("cre"),ex=nv("ce"),ix=nv("cix")/100;if(!pr||!re)return;const n=(re-ex)*12,y=n/pr*100,pb=pr/n;let r5=re;for(let i=0;i<5;i++)r5*=(1+ix);const i5=(r5-ex)*12;let t=0,r=re;for(let j=0;j<10;j++){t+=(r-ex)*12;r*=(1+ix)}document.getElementById("r1").textContent=fm(n)+" ₽/год";document.getElementById("r2").textContent=y.toFixed(1)+"%";document.getElementById("r3").textContent=pb.toFixed(1)+" лет";document.getElementById("r4").textContent=fm(i5)+" ₽/год";document.getElementById("r5").textContent=fm(t)+" ₽"}
+function cc(){const pr=nv("cp"),re=nv("cr2"),ex=nv("cx"),ix=nv("ci2")/100;if(!pr||!re)return;const n=(re-ex)*12,y=n/pr*100,pb=pr/n;let r5=re;for(let i=0;i<5;i++)r5*=(1+ix);const i5=(r5-ex)*12;let t=0,r=re;for(let j=0;j<10;j++){t+=(r-ex)*12;r*=(1+ix)}document.getElementById("r1").textContent=fm(n)+" ₽/год";document.getElementById("r2").textContent=y.toFixed(1)+"%";document.getElementById("r3").textContent=pb.toFixed(1)+" лет";document.getElementById("r4").textContent=fm(i5)+" ₽/год";document.getElementById("r5").textContent=fm(t)+" ₽"}
 function sf(){const n=document.getElementById("fn").value,p=document.getElementById("fp").value;if(!n||!p){alert("Заполните имя и телефон");return}const tx="Заявка с сайта:\nИмя: "+n+"\nТел: "+p+"\nEmail: "+document.getElementById("fe").value+"\nТип: "+document.getElementById("ftp").value+"\n"+document.getElementById("fm").value;fetch("https://api.telegram.org/bot"+BT+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:AC,text:tx})}).then(()=>{alert("Заявка отправлена!");["fn","fp","fe","fm"].forEach(id=>document.getElementById(id).value="")}).catch(()=>alert("Ошибка"))}
 ld();cc();
 </script>
