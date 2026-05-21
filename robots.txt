@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kkarpovtseva769-bit.github.io/pulsar-app/sitemap.xml
+
+Host: https://kkarpovtseva769-bit.github.io/pulsar-app/
